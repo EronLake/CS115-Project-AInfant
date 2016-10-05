@@ -1,0 +1,59 @@
+﻿Heading: Document name ("Release Plan"),
+ product name
+ team name: Team Michael and the boyz
+ release name
+ release date
+ revision number & revision date.
+
+
+High Level Goals: (Be able to….)
+
+
+* Be able to learn basic grammatical structure.
+* Be able to learn new words.
+* Create user interface for product 
+* Be able to interact with users through conversation.
+* Be able to tell user it doesn’t understand input
+* Display deeper level of understanding of words (understand context)
+* Be able to express its own opinions (viewpoint)
+
+
+
+
+User Stories:
+As a {user role}, I want {goal} [so that {reason}]
+* (5) As a user of the app, I want to be able to teach the AI new grammatical structures so that i can use those structures when communicating
+* (2) As a user of the app, I want to be able to teach the AI new words, so that it will be able to use those words when communicating
+* (1) As an app user, I need a nice user interface, so that the app is easy to use
+* (5) As a developer, I need to have a database setup so that the AI can store/retrieve data and information about the English language 
+* (8) As a user I want the AI to tell me what and when it doesn’t understand, so I can teach it those words/structures
+* (13) As a user I want visual embodiment for the AI so it can physically show understanding of words other than just by text
+* (8) As a user I want the AI to be able to express its opinions, so that conversation feels more realistic
+
+
+
+	
+User Stories   																		Story Points																	
+	
+Sprint 1
+
+1. As an app user, I need a nice user interface, so that the app is easy to use 									1
+
+2.  As a developer, I need to have a database setup so that the AI can store/retrieve data and information about the English language 			5
+
+3. As a user of the app, I want to be able to teach the AI new grammatical structures so that i can use those structures when communicating		5
+	
+Sprint 2
+
+1. As a user of the app, I want to be able to teach the AI new words, so that it will be able to use those words when communicating			2
+
+2. As a user I want the AI to tell me what and when it doesn’t understand, so I can teach it those words/structures					8
+
+Sprint 3
+	
+
+1. As a user I want the AI to be able to express its opinions, so that conversation feels more realistic						8
+
+2. As a user I want visual embodiment for the AI so it can physically show understanding of words other than just by text				13
+
+
