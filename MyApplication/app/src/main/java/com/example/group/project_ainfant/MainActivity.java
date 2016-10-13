@@ -1,10 +1,12 @@
 package com.example.group.project_ainfant;
 
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -43,10 +45,12 @@ public class MainActivity extends ActionBarActivity {
     private EditText input;
     private TextView output;
 
-    public void onClick(View v){
-        //Button button = (Button) v;
+    public void buttonOnClick(View v){
+        Button button = (Button) v;
         input = (EditText) findViewById(R.id.inputText);
         output = (TextView) findViewById(R.id.outputText);
         output.setText(input.getText());
     }
 }
+
+

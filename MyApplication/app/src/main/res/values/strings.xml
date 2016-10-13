@@ -3,5 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="edit_message">Talk to AInfant</string>
     <string name="button_send">Enter</string>
+    <string name="outputText"></string>
 
 </resources>
