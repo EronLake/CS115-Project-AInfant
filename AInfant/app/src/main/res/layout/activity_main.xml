@@ -35,6 +35,18 @@
             android:layout_gravity="center_vertical"
             android:text="@string/outputText"/>
 
+        <Button
+            android:text="Add to Database"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_add" />
+
+        <Button
+            android:text="View All Data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_all" />
+
     </LinearLayout>
 
 </RelativeLayout>
