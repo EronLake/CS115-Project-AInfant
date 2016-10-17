@@ -15,6 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDBName.db";
     public static final String TABLE_NAME = "input_table";
     public static final String Table_Input = "INPUT";
+
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME , null, 1);
     }
@@ -33,9 +34,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
     public boolean insertData(String input){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        //putting the user input into the INPUT column
         contentValues.put(Table_Input, input);
         long result = db.insert(TABLE_NAME,null,contentValues);
         if(result == -1){
