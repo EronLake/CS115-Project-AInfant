@@ -2,7 +2,6 @@ package com.example.group.project_ainfant;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
@@ -34,43 +33,45 @@ public class MainActivity extends ActionBarActivity {
         viewAll();
     }
 
+    //change so that the onClickListener is defined in activity_main.xml
     public void addData() {
         buttonAddData.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(input.getText().toString());
-                        if(isInserted =true)
-                            Toast.makeText(MainActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(MainActivity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
-                    }
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean isInserted = myDb.insertData(input.getText().toString());
+                    if(isInserted =true)
+                        Toast.makeText(MainActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(MainActivity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
                 }
+            }
         );
     }
 
+    //change so that the onClickListener is defined in activity_main.xml
     public void viewAll() {
         buttonViewAll.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Cursor res = myDb.getAllData();
-                        if(res.getCount() == 0) {
-                            // show message
-                            showMessage("Error","Nothing found");
-                            return;
-                        }
-
-                        StringBuffer buffer = new StringBuffer();
-                        while (res.moveToNext()) {
-                            buffer.append("Id :"+ res.getString(0)+"\n");
-                            buffer.append("Input :"+ res.getString(1)+"\n");
-                        }
-
-                        // Show all data
-                        showMessage("Data",buffer.toString());
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Cursor res = myDb.getAllData();
+                    if(res.getCount() == 0) {
+                        // show message
+                        showMessage("Error","Nothing found");
+                        return;
                     }
+
+                    StringBuffer buffer = new StringBuffer();
+                    while (res.moveToNext()) {
+                        buffer.append("Id :"+ res.getString(0)+"\n");
+                        buffer.append("Input :"+ res.getString(1)+"\n");
+                    }
+
+                    // Show all data
+                    showMessage("Data",buffer.toString());
                 }
+            }
         );
     }
 
