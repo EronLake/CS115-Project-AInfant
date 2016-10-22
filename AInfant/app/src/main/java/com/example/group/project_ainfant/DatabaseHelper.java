@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by MichaelHa1 on 10/17/16.
+ * Expanded by Gamiel Sanchez
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -47,6 +48,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public boolean ifExists(String exists) {
+        String query = "Select * FROM " + TABLE_NAME + " WHERE " + Table_Input + " =  \"" + exists + "\"";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
 
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -34,18 +34,23 @@ public class MainActivity extends ActionBarActivity {
     }
 
     //change so that the onClickListener is defined in activity_main.xml
+    // checks if input already exists before adding into the database
     public void addData() {
         buttonAddData.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean isInserted = myDb.insertData(input.getText().toString());
-                    if(isInserted =true)
-                        Toast.makeText(MainActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(MainActivity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!myDb.ifExists(input.getText().toString())) {
+                            boolean isInserted = myDb.insertData(input.getText().toString());
+                            if (isInserted = true)
+                                Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                            else
+                                Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                        } else {
+                            showMessage("Error", "Already in database");
+                        }
+                    }
                 }
-            }
         );
     }
 
