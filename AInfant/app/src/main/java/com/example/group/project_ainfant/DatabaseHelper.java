@@ -12,9 +12,20 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-
+    //create database
     public static final String DATABASE_NAME = "MyDBName.db";
-    public static final String TABLE_NAME = "input_table";
+
+    //create word table
+    public static final String TABLE_NAME = "word_table";
+
+    //create rows
+    public static final String word_row_word = "WORD";
+    public static final String word_row_speech = "SPEECH";
+    public static final String word_row_plural = "PLURAL";
+    public static final String word_row_proper = "PROPER";
+    public static final String word_row_depend = "DEPEND";
+
+
     public static final String Table_Input = "INPUT";
 
     public DatabaseHelper(Context context){
@@ -25,7 +36,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
         //Create Input Table
-        db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, INPUT text)");
+        db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "INPUT text, "
+                + word_row_word + "BIT, "
+                + word_row_speech + "BIT, "
+                + word_row_plural + "BIT, "
+                + word_row_proper + "BIT,"
+                + word_row_depend + "BIT)"
+                );
     }
 
     @Override
