@@ -16,14 +16,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDBName.db";
 
     //create word table
-    public static final String TABLE_NAME = "word_table";
+    public static final String TABLE_NAME = "input_table";
 
-    //create rows
-    public static final String word_row_word = "WORD";
-    public static final String word_row_speech = "SPEECH";
-    public static final String word_row_plural = "PLURAL";
-    public static final String word_row_proper = "PROPER";
-    public static final String word_row_depend = "DEPEND";
+
 
 
     public static final String Table_Input = "INPUT";
@@ -37,12 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
         //Create Input Table
         db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "INPUT text, "
-                + word_row_word + "text, "
-                + word_row_speech + "text, "
-                + word_row_plural + "bit, "
-                + word_row_proper + "bit,"
-                + word_row_depend + "bit)"
+                + "INPUT text)"
                 );
     }
 
