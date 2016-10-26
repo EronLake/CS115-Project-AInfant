@@ -38,11 +38,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Create Input Table
         db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "INPUT text, "
-                + word_row_word + "BIT, "
-                + word_row_speech + "BIT, "
-                + word_row_plural + "BIT, "
-                + word_row_proper + "BIT,"
-                + word_row_depend + "BIT)"
+                + word_row_word + "text, "
+                + word_row_speech + "text, "
+                + word_row_plural + "bit, "
+                + word_row_proper + "bit,"
+                + word_row_depend + "bit)"
                 );
     }
 
