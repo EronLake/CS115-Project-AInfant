@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -153,14 +152,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    private TextView output;
-
-    public void buttonOnClick(View v){
-        Button button = (Button) v;
-        input = (EditText) findViewById(R.id.inputText);
-        output = (TextView) findViewById(R.id.outputText);
-        output.setText(input.getText());
-    }
 }
 
 
