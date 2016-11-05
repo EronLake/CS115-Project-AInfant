@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.DialogInterface;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -42,10 +43,11 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
                             boolean isInserted = myDb.insertData(input.getText().toString());
-                            if (isInserted = true)
+                            showMessage2("What part of speech is that new word?");
+                            /*if (isInserted = true)
                                 Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                             else
-                                Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();*/
                         } else {
                             showMessage("Error", "Already in database");
                         }
@@ -86,6 +88,40 @@ public class MainActivity extends ActionBarActivity {
         builder.setTitle(title);
         builder.setMessage(Message);
         builder.show();
+    }
+
+    public void showMessage2(String title) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setItems(new CharSequence[]
+                        {"button 1", "button 2", "button 3", "button 4", "button 5", "button 6"},
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+                        switch (which) {
+                            case 0:
+                                Toast.makeText(MainActivity.this, "clicked 1", 0).show();
+                                break;
+                            case 1:
+                                Toast.makeText(MainActivity.this, "clicked 2", 0).show();
+                                break;
+                            case 2:
+                                Toast.makeText(MainActivity.this, "clicked 3", 0).show();
+                                break;
+                            case 3:
+                                Toast.makeText(MainActivity.this, "clicked 4", 0).show();
+                                break;
+                            case 4:
+                                Toast.makeText(MainActivity.this, "clicked 5", 0).show();
+                                break;
+                            case 5:
+                                Toast.makeText(MainActivity.this, "clicked 6", 0).show();
+                                break;
+                        }
+                    }
+                });
+        builder.create().show();
     }
 
     @Override
