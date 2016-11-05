@@ -15,7 +15,7 @@ public class Word {
 
     public Word constructObject(String word, String PoS, Hashtable<String, Integer> Tags) {
         if (PoS.equals("Noun")) {
-            Noun new_Word = new Noun(Tags.get("type"), Tags.get("propVImp"), Tags.get("plurVSing"));
+            Noun new_Word = new Noun(String word, Tags.get("type"), Tags.get("propVImp"), Tags.get("plurVSing"));
         } else if (PoS.equals("Verb")) {
             //Verb new_Word =
         } else if (PoS.equals("Verb")) {
