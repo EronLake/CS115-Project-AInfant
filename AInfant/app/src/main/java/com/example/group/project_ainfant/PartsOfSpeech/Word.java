@@ -1,5 +1,7 @@
 package com.example.group.project_ainfant.PartsOfSpeech;
 
+import java.util.Hashtable;
+
 /**
  * Created by eronj on 10/18/2016.
  */
@@ -11,6 +13,14 @@ public class Word {
 
 }
 
+public Word constructObject(String word, String PoS, Hashtable<String , Integer> Tags){
+    if (PoS.equals("Noun")){
+        Noun new_Word = new Noun(Tags.get("type"), Tags.get("propVImp"), Tags.get("plurVSing"));
+    } else if (PoS.equals("Verb")){
+
+    }
+
+}
 
 
 /*

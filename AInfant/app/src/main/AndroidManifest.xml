@@ -17,10 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Spinner"
-            android:label="@string/title_activity_spinner" >
-        </activity>
-        <activity
             android:name=".DropDownMenu"
             android:label="@string/title_activity_drop_down_menu" >
         </activity>

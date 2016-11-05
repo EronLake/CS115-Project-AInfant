@@ -21,7 +21,17 @@ public class Noun extends Word {
     public int propVImp;
     public int plurVSing;
 
+<<<<<<< HEAD
     public Noun(String name_, int type_,int propVimp_, int plurVSing_){
+=======
+    //if initialized with no parameters
+    public void noun() {
+        type = THING;
+        propVImp = IMPROPER;
+    }
+
+    public void noun(String name, int type, int propVimp){
+>>>>>>> 14017ac8c725d3d9a667e3d4af7439dd845abc9d
         //need to fill in
         this.name = name_;
         this.type = type_;
