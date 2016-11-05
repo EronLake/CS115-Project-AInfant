@@ -6,9 +6,11 @@ package com.example.group.project_ainfant.PartsOfSpeech;
 
 //Parent Class to parts of speech
 public class Word {
-    private String name;
-    private String definition;
+    public String name;
+    public String definition;
 }
+
+
 
 /*
     still need to create preposition and conjunction classes
