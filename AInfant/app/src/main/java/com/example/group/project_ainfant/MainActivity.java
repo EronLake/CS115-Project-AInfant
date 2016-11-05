@@ -1,5 +1,7 @@
 package com.example.group.project_ainfant;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,9 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.content.DialogInterface;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -43,7 +43,10 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
                             boolean isInserted = myDb.insertData(input.getText().toString());
-                            showMessage2("What part of speech is that new word?");
+                            Intent myIntent = new Intent(v.getContext(), DropDownMenu.class);
+                            startActivityForResult(myIntent, 0);
+
+                            //showMessage2("What part of speech is that new word?");
                             /*if (isInserted = true)
                                 Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                             else
@@ -101,23 +104,25 @@ public class MainActivity extends ActionBarActivity {
                         // of the selected item
                         switch (which) {
                             case 0:
-                                Toast.makeText(MainActivity.this, "clicked 1", 0).show();
+                                Toast.makeText(MainActivity.this, "Noun", Toast.LENGTH_LONG).show();
                                 break;
                             case 1:
-                                Toast.makeText(MainActivity.this, "clicked 2", 0).show();
+                                Toast.makeText(MainActivity.this, "Adjective", Toast.LENGTH_LONG).show();
                                 break;
                             case 2:
-                                Toast.makeText(MainActivity.this, "clicked 3", 0).show();
+                                Toast.makeText(MainActivity.this, "Adverb", Toast.LENGTH_LONG).show();
                                 break;
                             case 3:
-                                Toast.makeText(MainActivity.this, "clicked 4", 0).show();
+                                Toast.makeText(MainActivity.this, "Determiner", Toast.LENGTH_LONG).show();
                                 break;
                             case 4:
-                                Toast.makeText(MainActivity.this, "clicked 5", 0).show();
+                                Toast.makeText(MainActivity.this, "Interjection", Toast.LENGTH_LONG).show();
                                 break;
                             case 5:
-                                Toast.makeText(MainActivity.this, "clicked 6", 0).show();
+                                Toast.makeText(MainActivity.this, "Pronoun", Toast.LENGTH_LONG).show();
                                 break;
+                            case 6:
+                                Toast.makeText(MainActivity.this, "Verb", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -147,14 +152,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    private TextView output;
-
-    public void buttonOnClick(View v){
-        Button button = (Button) v;
-        input = (EditText) findViewById(R.id.inputText);
-        output = (TextView) findViewById(R.id.outputText);
-        output.setText(input.getText());
-    }
 }
 
 
