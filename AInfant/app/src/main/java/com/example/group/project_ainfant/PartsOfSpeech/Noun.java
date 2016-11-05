@@ -23,7 +23,7 @@ public class Noun extends Word {
         propVImp = IMPROPER;
     }
 
-    public void noun(String name, int type,int propVimp){
+    public void noun(String name, int type, int propVimp){
         //need to fill in
     }
 
