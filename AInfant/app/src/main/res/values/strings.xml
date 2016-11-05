@@ -4,5 +4,9 @@
     <string name="edit_message">Talk to AInfant</string>
     <string name="button_send">Enter</string>
     <string name="outputText"></string>
+    <string name="title_activity_spinner">Spinner</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_drop_down_menu">DropDownMenu</string>
 
 </resources>
