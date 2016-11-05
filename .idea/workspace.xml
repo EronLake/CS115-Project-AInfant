@@ -8,11 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="485d964d-9fb4-46ef-b9d6-fe909da3ca71" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/CoreNLP" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CS115-Project-AInfant.iml" afterPath="$PROJECT_DIR$/.idea/CS115-Project-AInfant.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AInfant/app/src/androidTest/java/com/example/group/project_ainfant/ApplicationTest.java" afterPath="$PROJECT_DIR$/AInfant/app/src/androidTest/java/com/example/group/project_ainfant/ApplicationTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/ParseTree.java" afterPath="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/ParseTree.java" />
     </list>
     <ignored path="CS115-Project-AInfant.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,7 +68,7 @@
       <file leaf-file-name="ParseTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/ParseTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="833">
               <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -585,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478214463539</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated ParseTree">
+      <created>1478332182482</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1478332182482</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -636,7 +640,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit R.J." />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit R.J." />
+    <MESSAGE value="Updated ParseTree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated ParseTree" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -874,7 +879,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/ParseTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
+        <state relative-caret-position="833">
           <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
