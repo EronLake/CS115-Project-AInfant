@@ -17,7 +17,7 @@ List and then attempts to shift reduce and build the tree up.
  occurring until shift is able to reduce to a single node called sentence or fails to make a single
  shift during an iteration in which case the sentence is invalid*/
 
-/*Root continuously adopts each node into itself until a shift reduce is possible*/
+/*Root ccontinuously adopts each node into itself until a shift reduce is possible*/
 public class ParseTree {
 
     private Node root;
