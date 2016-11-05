@@ -9,6 +9,7 @@ public class Noun extends Word {
     //used to determine type value
     final private int THING = 0;
     final private int PERSON = 1;
+    final private int PLACE = 2;
     //used to determine type propVImp value
     final private int PROPER = 2;
     final private int IMPROPER = 3;
