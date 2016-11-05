@@ -5,7 +5,7 @@ package com.example.group.project_ainfant.PartsOfSpeech;
  */
 
 //holds fields relative to a verb
-public class Verb {
+public class Verb extends Word{
     //used to determine type value
     final private int ACTIVE = 0;
     final private int PASSIVE = 1;

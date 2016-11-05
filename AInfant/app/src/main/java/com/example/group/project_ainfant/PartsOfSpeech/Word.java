@@ -8,6 +8,7 @@ package com.example.group.project_ainfant.PartsOfSpeech;
 public class Word {
     public String name;
     public String definition;
+
 }
 
 

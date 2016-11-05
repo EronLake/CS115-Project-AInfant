@@ -13,18 +13,20 @@ public class Noun extends Word {
     //used to determine type propVImp value
     final private int PROPER = 2;
     final private int IMPROPER = 3;
+    //used to determine type PlurVSing value
+    final private int PLURAL = 2;
+    final private int SINGULAR = 3;
 
-    int type;
-    int propVImp;
+    public int type;
+    public int propVImp;
+    public int plurVSing;
 
-    //if initialized with no parameters
-    public void noun() {
-        type = THING;
-        propVImp = IMPROPER;
-    }
-
-    public void noun(String name, int type,int propVimp){
+    public Noun(String name_, int type_,int propVimp_, int plurVSing_){
         //need to fill in
+        this.name = name_;
+        this.type = type_;
+        this.propVImp = propVimp_;
+        this.plurVSing = plurVSing_;
     }
 
 }
