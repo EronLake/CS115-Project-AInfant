@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import com.example.group.project_ainfant.PartsOfSpeech.*;
 /**
  * Created by MichaelHa1 on 10/17/16.
  * Expanded by Gamiel Sanchez
@@ -29,21 +29,106 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        //Create Input Table
-        db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "INPUT text, "
-                + word_row_speech + " text, "
-                + word_row_plural + " text, "
-                + word_row_proper + " text, "
-                + word_row_depend + " text "
-                + ")");
+        //Create Tables
+        initializeWords(db);
+        initializeAdjective(db);
+        initializeAdverb(db);
+        initializeDeterminer(db);
+        initializeInterjection(db);
+        initializeNoun(db);
+        initializePronoun(db);
+        initializeVerb(db);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Auto-generated method stub
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+
+
+    //Initialize table
+    //-------------------------------------------------------------------------------------
+
+    public void initializeWords(SQLiteDatabase db){
+        db.execSQL("create table words " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
+    public void initializeAdjective(SQLiteDatabase db){
+        db.execSQL("create table adjectives " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
+    public void initializeAdverb(SQLiteDatabase db){
+        db.execSQL("create table adverbs " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
+    public void initializeDeterminer(SQLiteDatabase db){
+        db.execSQL("create table determiners " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
+    public void initializeInterjection(SQLiteDatabase db){
+        db.execSQL("create table interjections " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
+    public void initializeNoun(SQLiteDatabase db){
+        db.execSQL("create table nouns " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text, PROPER text)"
+        );
+    }
+
+    public void initializePronoun(SQLiteDatabase db){
+        db.execSQL("create table words " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text, Gender text, VALUE text)"
+        );
+    }
+
+    public void initializeVerb(SQLiteDatabase db){
+        db.execSQL("create table words " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
+    //-------------------------------------------------------------------------------------
+
+    //Insert Functions
+    public void addAdjective(Adjective adjective){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("WORD", adjective.name); // The word
+        values.put("TYPE", adjective.posNegNeu); // Adjective Type
+
+        // Inserting Row
+        db.insert("adjectives", null, values);
+        db.close(); // Closing database connection
+
+    }
+
+    public void addNoun(Noun noun){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("WORD", noun.name); // The word
+        values.put("TYPE", noun.type); // Noun type
+        values.put("Proper", noun.propVImp); // Noun type
+
+        // Inserting Row
+        db.insert("nouns", null, values);
+        db.close(); // Closing database connection
+
     }
 
 
@@ -62,11 +147,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean ifExists(String exists) {
         String query = "Select * FROM " + TABLE_NAME + " WHERE " + Table_Input + " =  \"" + exists + "\"";
-
         SQLiteDatabase db = this.getWritableDatabase();
-
         Cursor cursor = db.rawQuery(query, null);
-
         if(cursor.getCount() <= 0){
             cursor.close();
             return false;

@@ -10,7 +10,7 @@ public class Adverb {
     final private int NEGATIVE = 1;
     final private int NEUTRAL = 1;
 
-    int posNegNeu;
+    public static int posNegNeu;
 
     //if initialized with no parameters
     public void Adverb() {
