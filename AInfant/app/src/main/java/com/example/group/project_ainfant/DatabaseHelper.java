@@ -90,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void initializePronoun(SQLiteDatabase db){
-        db.execSQL("create table words " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+        db.execSQL("create table pronouns " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "WORD text, TYPE text, Gender text, VALUE text)"
         );
     }
@@ -113,6 +113,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert("adjectives", null, values);
+        db.close(); // Closing database connection
+
+    }
+
+    public void addAdverb(Adverb adverb){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("WORD", adverb.name); // The word
+        values.put("TYPE", adverb.posNegNeu); // Adjective Type
+
+        // Inserting Row
+        db.insert("adverbs", null, values);
+        db.close(); // Closing database connection
+
+    }
+
+    public void addDeterminer(Determiner determiner){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("WORD", determiner.name); // The word
+        values.put("TYPE", determiner.howMany); // Adjective Type
+
+        // Inserting Row
+        db.insert("determiners", null, values);
         db.close(); // Closing database connection
 
     }
