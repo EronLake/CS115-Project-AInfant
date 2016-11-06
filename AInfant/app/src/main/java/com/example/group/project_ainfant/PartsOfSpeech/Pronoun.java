@@ -22,7 +22,7 @@ public class Pronoun extends Word{
     public static int subVObj;
     public static int gender;
     //singular or plural
-    int howMany;
+    public static int howMany;
 
     public Pronoun(String name_, int subVObj_, int gender_, int howMany_){
         //allows to also use the word constructor as defult(may need to change)

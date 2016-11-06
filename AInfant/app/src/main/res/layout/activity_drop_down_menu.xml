@@ -12,4 +12,10 @@ tools:context="com.example.group.project_ainfant.DropDownMenu">
         android:id="@+id/spin"
         android:entries="@array/parts_of_speech">
         </Spinner>
+
+    <Button
+        android:text="Add to Database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_add2" />
 </LinearLayout>

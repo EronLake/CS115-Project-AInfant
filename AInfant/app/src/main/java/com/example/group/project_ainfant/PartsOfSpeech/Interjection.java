@@ -5,6 +5,7 @@ package com.example.group.project_ainfant.PartsOfSpeech;
  */
 
 public class Interjection extends Word {
+
     //used to determine subVObj value
     final private int GREETING = 0;
     final private int EXCLAMATION = 1;

@@ -6,6 +6,7 @@ package com.example.group.project_ainfant.PartsOfSpeech;
 
 //holds fields relative to a noun
 public class Noun extends Word {
+
     //used to determine type value
     final private int THING = 0;
     final private int PERSON = 1;
@@ -30,6 +31,7 @@ public class Noun extends Word {
         this.type = type_;
         this.propVImp = propVimp_;
         this.howMany = howMany_;
+
     }
 
 }
