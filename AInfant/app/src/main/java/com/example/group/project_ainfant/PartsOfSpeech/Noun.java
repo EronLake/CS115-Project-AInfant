@@ -21,10 +21,10 @@ public class Noun extends Word {
     public int propVImp;
     public int plurVSing;
 
-    public Noun(String name_, int type_,int propVimp_, int plurVSing_){
+    public Noun(String name_, int type_,int propVImp_, int plurVSing_){
         this.name = name_;
         this.type = type_;
-        this.propVImp = propVimp_;
+        this.propVImp = propVImp_;
         this.plurVSing = plurVSing_;
     }
 
