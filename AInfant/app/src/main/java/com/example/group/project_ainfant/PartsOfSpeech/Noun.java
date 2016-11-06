@@ -17,15 +17,19 @@ public class Noun extends Word {
     final private int PLURAL = 2;
     final private int SINGULAR = 3;
 
-    public int type;
-    public int propVImp;
-    public int plurVSing;
+    public static int type;
+    public static int propVImp;
+    //singular or plural
+    public static int howMany;
 
-    public Noun(String name_, int type_,int propVimp_, int plurVSing_){
+    public Noun(String name_, int type_,int propVimp_, int howMany_){
+        //allows to also use the word constructor as defult(may need to change)
+        super();
+        //Constructor for Noun
         this.name = name_;
         this.type = type_;
         this.propVImp = propVimp_;
-        this.plurVSing = plurVSing_;
+        this.howMany = howMany_;
     }
 
 }
