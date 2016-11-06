@@ -4,7 +4,7 @@ package com.example.group.project_ainfant.PartsOfSpeech;
  * Created by eronj on 10/18/2016.
  */
 
-public class Pronoun {
+public class Pronoun extends Word{
     //used to determine subVObj value
     final private int SUBJECT = 0;
     final private int OBJECT = 1;
@@ -19,10 +19,10 @@ public class Pronoun {
     final private int SINGULAR = 6;
 
     //subject or object
-    int subVObj;
-    int gender;
+    public static int subVObj;
+    public static int gender;
     //singular or plural
-    int howMany;
+    public static int howMany;
 
 
     //if initialized with no parameters

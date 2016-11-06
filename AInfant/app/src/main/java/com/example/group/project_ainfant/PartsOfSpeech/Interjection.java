@@ -4,13 +4,13 @@ package com.example.group.project_ainfant.PartsOfSpeech;
  * Created by eronj on 10/18/2016.
  */
 
-public class Interjection {
+public class Interjection extends Word{
     //used to determine subVObj value
     final private int GREETING = 0;
     final private int EXCLAMATION = 1;
 
     //if greeting or exclamation
-    int type;
+    public static int type;
 
     //if initialized with no parameters
     public void Interjection() {

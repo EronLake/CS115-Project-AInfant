@@ -4,5 +4,16 @@
     <string name="edit_message">Talk to AInfant</string>
     <string name="button_send">Enter</string>
     <string name="outputText"></string>
+    <string name="title_activity_drop_down_menu">DropDownMenu</string>
+
+    <string-array name="parts_of_speech">
+        <item>Adjective</item>
+        <item>Adverb</item>
+        <item>Determiner</item>
+        <item>Interjection</item>
+        <item>Noun</item>
+        <item>Pronoun</item>
+        <item>Verb</item>
+    </string-array>
 
 </resources>
