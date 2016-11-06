@@ -10,7 +10,7 @@ public class Verb extends Word{
     final private int ACTIVE = 0;
     final private int PASSIVE = 1;
 
-    int actVPass;
+    public static int actVPass;
 
     //if initialized with no parameters
     public void verb() {

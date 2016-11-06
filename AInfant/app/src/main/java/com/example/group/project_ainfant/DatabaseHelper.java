@@ -16,12 +16,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDBName.db";
     public static final String TABLE_NAME = "input_table";
     public static final String Table_Input = "INPUT";
-
-    public static final String word_row_speech = "SPEECH";
-    public static final String word_row_plural = "PLURAL";
-    public static final String word_row_proper = "PROPER";
-    public static final String word_row_depend = "DEPEND";
-
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME , null, 1);
     }
@@ -91,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void initializePronoun(SQLiteDatabase db){
         db.execSQL("create table pronouns " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "WORD text, TYPE text, Gender text, VALUE text)"
+                + "WORD text, TYPE text, GENDER text, VALUE text)"
         );
     }
 
@@ -103,6 +97,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //-------------------------------------------------------------------------------------
 
+
+
     //Insert Functions
     public void addAdjective(Adjective adjective){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -113,6 +109,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert("adjectives", null, values);
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", adjective.name);
+        values.put("TYPE", adjective.definition);
+        db.insert("words", null, values);
         db.close(); // Closing database connection
 
     }
@@ -126,6 +127,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert("adverbs", null, values);
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", adverb.name);
+        values.put("TYPE", adverb.definition);
+        db.insert("words", null, values);
         db.close(); // Closing database connection
 
     }
@@ -135,12 +141,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put("WORD", determiner.name); // The word
-        values.put("TYPE", determiner.howMany); // Adjective Type
-
+        values.put("TYPE", determiner.howMany); // determiner Type
         // Inserting Row
         db.insert("determiners", null, values);
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", determiner.name);
+        values.put("TYPE", determiner.definition);
+        db.insert("words", null, values);
         db.close(); // Closing database connection
+    }
 
+    public void addInterjection(Interjection interjection){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("WORD", interjection.name); // The word
+        values.put("TYPE", interjection.type); // determiner Type
+        // Inserting Row
+        db.insert("interjections", null, values);
+
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", interjection.name);
+        values.put("TYPE", interjection.definition);
+        db.insert("words", null, values);
+        db.close(); // Closing database connection
     }
 
     public void addNoun(Noun noun){
@@ -149,12 +174,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("WORD", noun.name); // The word
         values.put("TYPE", noun.type); // Noun type
-        values.put("Proper", noun.propVImp); // Noun type
-
+        values.put("PROPER", noun.propVImp); // Noun type
         // Inserting Row
         db.insert("nouns", null, values);
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", noun.name);
+        values.put("TYPE", noun.definition);
+        db.insert("words", null, values);
         db.close(); // Closing database connection
 
+    }
+
+    public void addPronoun(Pronoun pronoun){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("WORD", pronoun.name); // The word
+        values.put("TYPE", pronoun.subVObj); // Pronoun type
+        values.put("GENDER", pronoun.gender); // Pronoun type
+        values.put("VALUE",pronoun.howMany);
+        // Inserting Row
+        db.insert("pronouns", null, values);
+
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", pronoun.name);
+        values.put("TYPE", pronoun.definition);
+        db.insert("words", null, values);
+        db.close(); // Closing database connection
+
+    }
+
+    public void addVerb(Verb verb){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("WORD", verb.name); // The word
+        values.put("TYPE", verb.actVPass); // verb Type
+        // Inserting Row
+        db.insert("verbs", null, values);
+
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", verb.name);
+        values.put("TYPE", verb.definition);
+        db.insert("words", null, values);
+
+        db.close(); // Closing database connection
     }
 
 
