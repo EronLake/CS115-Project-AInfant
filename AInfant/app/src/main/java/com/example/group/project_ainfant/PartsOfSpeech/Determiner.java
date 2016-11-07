@@ -10,13 +10,13 @@ public class Determiner extends Word {
     final private int PLURAL = 0;
     final private int SINGULAR = 1;
 
-    public static int howMany;
+    public static int singVPlur;
 
-    public Determiner(String name_, int howMany_){
+    public Determiner(String name_, int singVPlur_){
         //allows to also use the word constructor as defult(may need to change)
         super();
         //Constructor for Determiner
         this.name = name_;
-        this.howMany = howMany_;
+        this.singVPlur = singVPlur_;
     }
 }
