@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMu
 
         myDb = new DatabaseHelper(this);
 
+
         input = (EditText)findViewById(inputText);
         buttonUserInput = (Button)findViewById(R.id.button_enter);
         buttonAddData = (Button)findViewById(R.id.button_add);

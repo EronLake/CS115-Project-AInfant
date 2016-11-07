@@ -92,7 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void initializeVerb(SQLiteDatabase db){
-        db.execSQL("create table words " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+        db.execSQL("create table verbs " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "WORD text, TYPE text)"
         );
     }
@@ -240,7 +240,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean ifExists(String exists) {
-        String query = "Select * FROM " + TABLE_NAME + " WHERE " + "INPUT" + " =  \"" + exists + "\"";
+        String query = "Select * FROM words WHERE TYPE" + " =  \"" + exists + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0){
