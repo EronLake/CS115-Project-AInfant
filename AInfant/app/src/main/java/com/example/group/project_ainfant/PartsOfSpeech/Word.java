@@ -11,11 +11,8 @@ public class Word {
     public static String name;
     public static String definition;
 
-    public Word(){
-        String name = "";
-    }
 
-    //Created by riamunoz | 11-06-2016//
+    //** Created by riamunoz || 11-06-2016 **//
 
     public Word constructObject(String word, String PoS, Hashtable<String, Integer> Tags) {
         //Checks PoS and constructs appropriate PoS with its given tags:
@@ -23,7 +20,6 @@ public class Word {
             Noun new_Word = new Noun(word, Tags.get("type"), Tags.get("propVImp"), Tags.get("singVPlur"));
             return new_Word;
         } else if (PoS.equals("Verb")) {
-            //Verb new_Word =
             Verb new_Word = new Verb(word, Tags.get("actVPass"));
             return new_Word;
         } else if (PoS.equals("Adjective")){

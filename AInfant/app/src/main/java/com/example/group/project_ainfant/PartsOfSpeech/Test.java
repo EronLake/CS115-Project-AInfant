@@ -1,4 +1,4 @@
-package com.example.group.project_ainfant;
+package com.example.group.project_ainfant.PartsOfSpeech;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
