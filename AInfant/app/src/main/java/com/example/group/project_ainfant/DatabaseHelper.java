@@ -143,7 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put("WORD", determiner.name); // The word
-        values.put("TYPE", determiner.howMany); // determiner Type
+        values.put("TYPE", determiner.singVPlur); // determiner Type
         // Inserting Row
         db.insert("determiners", null, values);
         //put it in the words table as well
@@ -195,7 +195,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("WORD", pronoun.name); // The word
         values.put("TYPE", pronoun.subVObj); // Pronoun type
         values.put("GENDER", pronoun.gender); // Pronoun type
-        values.put("VALUE",pronoun.howMany);
+        values.put("VALUE",pronoun.singVPlur);
         // Inserting Row
         db.insert("pronouns", null, values);
 
