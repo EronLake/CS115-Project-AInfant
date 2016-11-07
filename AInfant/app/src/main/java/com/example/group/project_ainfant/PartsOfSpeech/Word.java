@@ -15,7 +15,10 @@ public class Word {
         String name = "";
     }
 
+    //Created by riamunoz | 11-06-2016//
+
     public Word constructObject(String word, String PoS, Hashtable<String, Integer> Tags) {
+        //Checks PoS and constructs appropriate PoS with its given tags:
         if (PoS.equals("Noun")) {
             Noun new_Word = new Noun(word, Tags.get("type"), Tags.get("propVImp"), Tags.get("singVPlur"));
             return new_Word;
@@ -39,7 +42,7 @@ public class Word {
             Interjection new_Word = new Interjection(word, Tags.get("singVPlur"));
             return new_Word;
         }
-        return null;
+        return null; // Returns null if PoS is not recognized
     }
 }
 
