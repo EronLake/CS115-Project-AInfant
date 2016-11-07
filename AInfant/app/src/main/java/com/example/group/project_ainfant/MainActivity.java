@@ -5,11 +5,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import android.widget.Toast;
@@ -21,7 +23,7 @@ import static com.example.group.project_ainfant.R.id.inputText;
 
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMultipleItemsSelectedListener {
     DatabaseHelper myDb;
     EditText input;
     TextView output;
@@ -33,6 +35,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String[] array = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        DropDownMenu drop = (DropDownMenu) findViewById(R.id.spin);
+        drop.setItems(array);
+        drop.setSelection(new int[]{2, 6});
+        drop.setListener(this);
+
         myDb = new DatabaseHelper(this);
 
         input = (EditText)findViewById(inputText);

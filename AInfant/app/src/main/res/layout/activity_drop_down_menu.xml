@@ -12,7 +12,7 @@
         android:text="Part of Speech"
         android:layout_marginBottom="5dp"/>
 
-    <Spinner
+    <com.example.group.project_ainfant.DropDownMenu
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spin"
