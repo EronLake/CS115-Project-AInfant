@@ -12,11 +12,11 @@ public class Noun extends Word {
     final private int PERSON = 1;
     final private int PLACE = 2;
     //used to determine type propVImp value
-    final private int PROPER = 2;
-    final private int IMPROPER = 3;
+    final private int PROPER = 3;
+    final private int IMPROPER = 4;
     //used to determine type PlurVSing value
-    final private int PLURAL = 2;
-    final private int SINGULAR = 3;
+    final private int PLURAL = 5;
+    final private int SINGULAR = 6;
 
     public static int type;
     public static int propVImp;

@@ -10,7 +10,7 @@ public class Adverb extends Word {
     //used to determine posNegNeu value(may only be used later on)
     final private int POSITVE = 0;
     final private int NEGATIVE = 1;
-    final private int NEUTRAL = 1;
+    final private int NEUTRAL = 2;
 
     public static int posNegNeu;
 

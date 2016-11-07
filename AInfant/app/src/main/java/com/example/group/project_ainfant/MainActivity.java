@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static com.example.group.project_ainfant.R.id.inputText;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -28,8 +30,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         myDb = new DatabaseHelper(this);
 
+        input = (EditText)findViewById(inputText);
         buttonUserInput = (Button)findViewById(R.id.button_enter);
         buttonAddData = (Button)findViewById(R.id.button_add);
         buttonViewAll = (Button)findViewById(R.id.view_all);
