@@ -12,7 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.widget.Toast;
+import android.content.DialogInterface;
+import android.util.Log;
+
+
 import static com.example.group.project_ainfant.R.id.inputText;
+
 
 
 public class MainActivity extends ActionBarActivity {
@@ -36,7 +42,9 @@ public class MainActivity extends ActionBarActivity {
         buttonViewAll = (Button)findViewById(R.id.view_all);
         addData();
         viewAll();
+
     }
+    //change so that the onClickListener is defined in activity_main.xml
 
     // function that will allow user to talk to AI
     // need to change so the input goes to parser instead of just echoing
@@ -52,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
                 }
         );
     }
+
 
     // checks if input already exists before adding into the database
     public void addData() {
@@ -70,6 +79,7 @@ public class MainActivity extends ActionBarActivity {
                         } else {
                             showMessage("Error", "Already in database");
                         }
+
                     }
                 }
         );
@@ -132,6 +142,39 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //private TextView output;
+    /*public void buttonOnClick(View v){
+        Button button = (Button) v;
+        input = (EditText) findViewById(R.id.inputText);
+        output = (TextView) findViewById(R.id.outputText);
+        output.setText(input.getText());
+        validateInput(tokenize(input.getText().toString().trim()));
+    }*/
+
+    //Tokenizes the input from the text field and returns it in an array
+    public String[] tokenize(String s){
+
+        String delim = "\\W+";
+        String[] tok = s.split(delim);
+        return tok;
+
+
+    }
+    //Database to String input validation
+    public boolean validateInput(String[] tokens){
+
+        for(String s: tokens){
+
+            if(!myDb.ifExists(s)){
+                Log.d("myTag", "String not recognized"); //test to see if string is not known
+                return false;
+
+            }
+
+        }
+
+        return true;
+    }
 
 }
 

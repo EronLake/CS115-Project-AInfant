@@ -12,12 +12,11 @@ public class Adjective extends Word{
 
     public static int posNegNeu;
 
-    //if initialized with no parameters
-    public void Adjective() {
-        posNegNeu = NEUTRAL;
-    }
-
-    public void Adjective(int posNegNeu){
-        //need to fill in
+    public Adjective(String name_, int posNegNeu_){
+        //allows to also use the word constructor as defult(may need to change)
+        super();
+        //Constructor for Adjective
+        this.name = name_;
+        this.posNegNeu = posNegNeu_;
     }
 }

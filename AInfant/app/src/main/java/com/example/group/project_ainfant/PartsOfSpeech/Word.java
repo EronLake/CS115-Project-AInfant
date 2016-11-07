@@ -8,10 +8,12 @@ import java.util.Hashtable;
 
 //Parent Class to parts of speech
 public class Word {
-    public String name;
-    public String definition;
+    public static String name;
+    public static String definition;
 
-
+    public Word(){
+        String name = "";
+    }
 
     public Word constructObject(String word, String PoS, Hashtable<String, Integer> Tags) {
         if (PoS.equals("Noun")) {

@@ -24,16 +24,14 @@ public class Pronoun extends Word{
     //singular or plural
     public static int howMany;
 
-
-    //if initialized with no parameters
-    public void Pronoun() {
-        subVObj = SUBJECT;
-        gender = OBJECT;
-        howMany = SINGULAR;
-    }
-
-    public void Pronoun(int subVObj,int gender,int howMany){
-        //need to fill in
+    public Pronoun(String name_, int subVObj_, int gender_, int howMany_){
+        //allows to also use the word constructor as defult(may need to change)
+        super();
+        //Constructor for Pronoun
+        this.name = name_;
+        this.subVObj = subVObj_;
+        this.gender = gender_;
+        this.howMany = howMany_;
     }
 
 }
