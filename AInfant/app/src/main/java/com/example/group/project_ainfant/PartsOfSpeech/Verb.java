@@ -14,7 +14,7 @@ public class Verb extends Word{
 
     public Verb(String name_, int actVPass_){
         //allows to also use the word constructor as defult(may need to change)
-        super();
+        //super();
         //Constructor for verb
         this.name = name_;
         this.actVPass = actVPass_;
