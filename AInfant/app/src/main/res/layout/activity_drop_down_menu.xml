@@ -7,14 +7,25 @@
     tools:context="com.example.group.project_ainfant.DropDownMenu"
     android:orientation="vertical">
 
-
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Select part of speech:"/>
 
     <Spinner
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spin"
-        android:entries="@array/parts_of_speech">
-        </Spinner>
+        android:id="@+id/spin"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Select connotation:"/>
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spin2"/>
 
     <Button
         android:text="Add to Database"
