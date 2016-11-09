@@ -41,6 +41,12 @@ public class ParseTree {
         }
     }
 
+    //gets the node at the give ptr posiition
+    public Node getNode(int ptr){
+        Node node = SRList.get(ptr);
+        return node;
+    }
+
     //creates a node from an object
     public Node newNode(Object o){
         Node n = new Node(o);
@@ -54,7 +60,7 @@ public class ParseTree {
     //use the ptr to shift reduce.
     public void shiftReduce(List<Node> nds,Node node){
 
-        Node srnode = newNode(node.getNodeDate());
+        Node srnode = newNode(node.getNodeData());
         for(Node n: nds){
             srnode.addNode(n);
         }
@@ -79,7 +85,7 @@ public class ParseTree {
     }
 
     //Node class, child is a list of nodes and each node holds an object
-    private static class Node{
+    public static class Node{
 
         private List<Node> child;
         private Object obj;
@@ -103,8 +109,7 @@ public class ParseTree {
         public void emptyChildren(){
             this.child.clear();
         }
-        public Object getNodeDate(){
-
+        public Object getNodeData(){
             return this.obj;
 
         }

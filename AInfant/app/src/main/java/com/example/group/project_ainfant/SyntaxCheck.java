@@ -13,17 +13,33 @@ import java.util.List;
 public class SyntaxCheck {
 
     ParseTree p;
-    int lookahead_ptr;
 
     SyntaxCheck(List<Word> w){
-        
+
         ParseTree p = new ParseTree(w);
 
     }
 
-    public boolean lookAhead(){
+    public boolean ListSweep(){
 
-        p.SRList.get(lookahead_ptr);
+        boolean if_shift_reduced = false;
+
+        for(int sweep_ptr = 0; sweep_ptr < p.SRList.size(); sweep_ptr++ ){
+        // gets lookahead
+        ParseTree.Node next_node = p.getNode(sweep_ptr);
+
+        //check if you can shift reduce or not
+
+            //call boolean canAdopt(next_node)
+                // canAdopt looks at parent node's child(current node)
+                // to determine if new_ode can be adopted
+
+                //if it can shift reduce and change if_shift_reduced = true
+
+                //else continue;
+            //check rules
+        }
+
         return true;
     }
 
