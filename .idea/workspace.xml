@@ -9,11 +9,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="485d964d-9fb4-46ef-b9d6-fe909da3ca71" name="Default" comment="Added temporary validator function">
+    <list default="true" id="485d964d-9fb4-46ef-b9d6-fe909da3ca71" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AInfant/.idea/gradle.xml" afterPath="$PROJECT_DIR$/AInfant/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AInfant/.idea/misc.xml" afterPath="$PROJECT_DIR$/AInfant/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/ParseTree.java" afterPath="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/ParseTree.java" />
     </list>
     <ignored path="CS115-Project-AInfant.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,6 +106,7 @@
         <option value="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/Validate.java" />
         <option value="$PROJECT_DIR$/AInfant/app/build.gradle" />
         <option value="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AInfant/app/src/main/java/com/example/group/project_ainfant/SyntaxCheck.java" />
       </list>
     </option>
   </component>
@@ -883,7 +881,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478332334915</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Editted ParseTree&#10;Added SyntaxCheck">
+      <created>1478653130350</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1478653130350</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -975,7 +980,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit R.J." />
     <MESSAGE value="Updated ParseTree" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated ParseTree" />
+    <MESSAGE value="Editted ParseTree&#10;Added SyntaxCheck" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editted ParseTree&#10;Added SyntaxCheck" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

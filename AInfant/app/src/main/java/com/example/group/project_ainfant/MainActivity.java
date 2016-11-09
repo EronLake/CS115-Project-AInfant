@@ -17,7 +17,7 @@ import static com.example.group.project_ainfant.R.id.inputText;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    SyntaxCheck s;
     DatabaseHelper myDb;
     EditText input;
     TextView output;
