@@ -5,25 +5,19 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import android.widget.Toast;
-import android.content.DialogInterface;
-import android.util.Log;
-
 
 import static com.example.group.project_ainfant.R.id.inputText;
 
 
+public class MainActivity extends ActionBarActivity {
 
-public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMultipleItemsSelectedListener {
     DatabaseHelper myDb;
     EditText input;
     TextView output;
@@ -36,14 +30,8 @@ public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] array = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
-        DropDownMenu drop = (DropDownMenu) findViewById(R.id.spin);
-        drop.setItems(array);
-        drop.setSelection(new int[]{2, 6});
-        drop.setListener(this);
 
         myDb = new DatabaseHelper(this);
-
 
         input = (EditText)findViewById(inputText);
         buttonUserInput = (Button)findViewById(R.id.button_enter);
@@ -53,11 +41,12 @@ public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMu
         viewAll();
 
     }
-    //change so that the onClickListener is defined in activity_main.xml
+
 
     // function that will allow user to talk to AI
     // need to change so the input goes to parser instead of just echoing
-    public void userInput() {
+
+    /*public void userInput() {
         buttonUserInput.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -68,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMu
                     }
                 }
         );
-    }
+    }*/
 
 
     // checks if input already exists before adding into the database
@@ -184,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements DropDownMenu.OnMu
 
         return true;
     }
+
 
 }
 
