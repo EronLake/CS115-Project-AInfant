@@ -1,5 +1,7 @@
 package com.example.group.project_ainfant;
 
+import com.example.group.project_ainfant.PartsOfSpeech.Word;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +19,28 @@ List and then attempts to shift reduce and build the tree up.
  occurring until shift is able to reduce to a single node called sentence or fails to make a single
  shift during an iteration in which case the sentence is invalid*/
 
-/*Root ccontinuously adopts each node into itself until a shift reduce is possible*/
+/*Root continuously adopts each node into itself until a shift reduce is possible*/
 public class ParseTree {
+
+    //NOTES FOR Robert:
+    /*
+    3. I changed the name of empty to empty children for clarity
+    4. Also I am making a test for the ParseTree Function that we are going to make
+       So we can have a clear input and output established based off of our conversation
+    3. I also made a constructor for the parseTree
+     */
 
     private Node ptr;
     public List<Node> SRList;
     public List<Node> Temp;
 
-    public ParseTree(){
-
+    public ParseTree(List<Word> word_list){
+        for (Word word:word_list) {
+            Node word_node = newNode(word);
+            SRList.add(word_node);
+        }
     }
+
     //creates a node from an object
     public Node newNode(Object o){
         Node n = new Node(o);
@@ -47,20 +61,23 @@ public class ParseTree {
         Temp.add(srnode);
 
     }
-    //gets the SRList
-    public List<Node> getSRList(){
-        return this.SRList;
+
+    //empties the SRList
+    public void clearSRList() {
+        this.SRList.clear();
     }
-    //returns the temp list
-    public List<Node> getTempList(){ return this.Temp; }
-    //empties the temp list
-    public void clearTemp(){
-        this.Temp.clear();
-    }
+
     //sets the SRList and updates it to the temp list before it is cleared
     public void updateSRList(){
         this.SRList = this.Temp;
+
     }
+
+    //empties the Temp List
+    public void clearTempList(){
+        this.Temp.clear();
+    }
+
     //Node class, child is a list of nodes and each node holds an object
     private static class Node{
 
@@ -78,13 +95,13 @@ public class ParseTree {
             this.child.add(new Node(o));
 
         }
+
         public void addNode(Node n){
             this.child.add(n);
         }
-        public void empty(){
 
+        public void emptyChildren(){
             this.child.clear();
-
         }
         public Object getNodeDate(){
 
