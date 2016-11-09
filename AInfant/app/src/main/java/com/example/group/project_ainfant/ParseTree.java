@@ -1,5 +1,7 @@
 package main.java.com.example.group.project_ainfant;
 
+import com.example.group.project_ainfant.PartsOfSpeech.Word;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +19,31 @@ List and then attempts to shift reduce and build the tree up.
  occurring until shift is able to reduce to a single node called sentence or fails to make a single
  shift during an iteration in which case the sentence is invalid*/
 
-/*Root ccontinuously adopts each node into itself until a shift reduce is possible*/
+/*Root continuously adopts each node into itself until a shift reduce is possible*/
 public class ParseTree {
+
+
+    //NOTES FOR Robert:
+    /*
+    1. THe root doesn't appear to be functioning as the root based off of our conversation
+       and what the code looks like it is doing, so we should rename it to current_pointer
+       or something like that
+
+    2. I added the Temp List to the parseTree structure
+    3. I changed the name of empty to empty children for clarity
+    4. Also I am making a test for the ParseTree Function that we are going to make
+       So we can have a clear input and output established based off of our conversation
+     */
 
     private Node root;
     private List<Node> SRList;
+    private List<Node> TempList;
 
-    public ParseTree(){
+    public ParseTree(List<Word> word_list){
+        for (Word word:word_list) {
+            Node word_node = newNode(word);
+            SRList.add(word_node);
+        }
 
     }
     //creates a node from an object
@@ -42,19 +62,34 @@ public class ParseTree {
 
         Node sr = newNode(o);
         sr = root;
-        root.empty();
+        root.emptyChildren();
         root.addNode(sr);
         SRList.add(sr);
 
     }
+
     //gets the SRList
     public List<Node> getSRList(){
         return this.SRList;
     }
+
+    //gets the Temp List
+    public List<Node> geTempList(){
+        return this.TempList;
+    }
+
+
+
     //empties the SRList
     public void clearSRList(){
         this.SRList.clear();
     }
+
+    //empties the Temp List
+    public void clearTempList(){
+        this.TempList.clear();
+    }
+
     //Node class, child is a list of nodes and each node holds an object
     private static class Node{
 
@@ -72,7 +107,8 @@ public class ParseTree {
             this.child.add(new Node(o));
 
         }
-        public void empty(){
+
+        public void emptyChildren(){
 
             this.child.clear();
 

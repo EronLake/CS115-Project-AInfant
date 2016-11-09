@@ -156,8 +156,8 @@ public class MainActivity extends ActionBarActivity {
         String[] tok = s.split(delim);
         return tok;
 
-
     }
+    //String [] tok = sentence.split("\\W+");
     //Database to String input validation
     public boolean validateInput(String[] tokens){
 

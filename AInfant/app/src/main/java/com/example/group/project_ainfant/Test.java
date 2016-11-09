@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
 import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by eronj on 11/6/2016.
@@ -39,5 +40,21 @@ public class Test {
             Log.d(TAG, new_Word.name);
             return true;
         }
+    }
+
+
+    //test method for the constructObject function
+    public boolean parseTreeTest() {
+    /*
+    public ParseTree(List<Word> word_list){
+        for (Word word:word_list) {
+            main.java.com.example.group.project_ainfant.ParseTree.Node word_node = newNode(word);
+            SRList.add(word_node);
+        }
+
+    }
+    */
+        List<Word> word_list;
+        return true;
     }
 }
