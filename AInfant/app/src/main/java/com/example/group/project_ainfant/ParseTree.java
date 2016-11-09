@@ -1,4 +1,4 @@
-package main.java.com.example.group.project_ainfant;
+package com.example.group.project_ainfant;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
@@ -22,72 +22,60 @@ List and then attempts to shift reduce and build the tree up.
 /*Root continuously adopts each node into itself until a shift reduce is possible*/
 public class ParseTree {
 
-
     //NOTES FOR Robert:
     /*
-    1. THe root doesn't appear to be functioning as the root based off of our conversation
-       and what the code looks like it is doing, so we should rename it to current_pointer
-       or something like that
-
-    2. I added the Temp List to the parseTree structure
     3. I changed the name of empty to empty children for clarity
     4. Also I am making a test for the ParseTree Function that we are going to make
        So we can have a clear input and output established based off of our conversation
+    3. I also made a constructor for the parseTree
      */
 
-    private Node root;
-    private List<Node> SRList;
-    private List<Node> TempList;
+    private Node ptr;
+    public List<Node> SRList;
+    public List<Node> Temp;
 
     public ParseTree(List<Word> word_list){
         for (Word word:word_list) {
             Node word_node = newNode(word);
             SRList.add(word_node);
         }
-
     }
+
     //creates a node from an object
     public Node newNode(Object o){
         Node n = new Node(o);
         return n;
     }
-    //root adopts an object as its child node
-    public void adoptToRoot(Object o){
-        this.root.addNode(o);
-    }
-    //takes the root and object to shift reduce to and makes the SR object take the place of the
-    //root node and make the root the parent of the new SR node and then empties the root and adds
-    //the SR node to the tree
-    public void shiftReduce(Object o){
-
-        Node sr = newNode(o);
-        sr = root;
-        root.emptyChildren();
-        root.addNode(sr);
-        SRList.add(sr);
-
+    //as you Use the Look Ahead and go through the
+    public void adoptToPtr(Node n){
+        this.ptr.addNode(n);
     }
 
-    //gets the SRList
-    public List<Node> getSRList(){
-        return this.SRList;
+    //use the ptr to shift reduce.
+    public void shiftReduce(List<Node> nds,Node node){
+
+        Node srnode = newNode(node.getNodeDate());
+        for(Node n: nds){
+            srnode.addNode(n);
+        }
+        Temp.add(srnode);
+
     }
-
-    //gets the Temp List
-    public List<Node> geTempList(){
-        return this.TempList;
-    }
-
-
 
     //empties the SRList
-    public void clearSRList(){
+    public void clearSRList() {
         this.SRList.clear();
+    }
+
+    //sets the SRList and updates it to the temp list before it is cleared
+    public void updateSRList(){
+        this.SRList = this.Temp;
+
     }
 
     //empties the Temp List
     public void clearTempList(){
-        this.TempList.clear();
+        this.Temp.clear();
     }
 
     //Node class, child is a list of nodes and each node holds an object
@@ -108,9 +96,16 @@ public class ParseTree {
 
         }
 
-        public void emptyChildren(){
+        public void addNode(Node n){
+            this.child.add(n);
+        }
 
+        public void emptyChildren(){
             this.child.clear();
+        }
+        public Object getNodeDate(){
+
+            return this.obj;
 
         }
 
