@@ -30,7 +30,7 @@ public class ParseTree {
     3. I also made a constructor for the parseTree
      */
 
-    private Node ptr;
+    private Node parent;
     public List<Node> SRList;
     public List<Node> Temp;
 
@@ -48,7 +48,7 @@ public class ParseTree {
     }
     //as you Use the Look Ahead and go through the
     public void adoptToPtr(Node n){
-        this.ptr.addNode(n);
+        this.parent.addNode(n);
     }
 
     //use the ptr to shift reduce.
