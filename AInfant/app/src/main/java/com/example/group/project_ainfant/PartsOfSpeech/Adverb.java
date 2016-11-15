@@ -15,8 +15,7 @@ public class Adverb extends Word {
     public static int posNegNeu;
 
     public Adverb(String name_, int posNegNeu_){
-        //allows to also use the word constructor as defult(may need to change)
-        super();
+
         //Constructor for Adverb
         this.name = name_;
         this.posNegNeu = posNegNeu_;

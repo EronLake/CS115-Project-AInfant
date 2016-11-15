@@ -79,6 +79,16 @@ public class ParseTree {
 
     }
 
+    public boolean canAdopt(Node next_node){
+        //get the current node from the node that has already
+        //been adopted by the parent
+        Node cur_node = parent.getChildren().get(0);
+        SyntaxRules rules = new SyntaxRules();
+        //returns the reult of checkrules saying if the next
+        //node can be adopted or not
+        return rules.checkRules(cur_node,next_node);
+    }
+
     //empties the Temp List
     public void clearTempList(){
         this.Temp.clear();
@@ -89,17 +99,17 @@ public class ParseTree {
 
         private List<Node> child;
         private Object obj;
+        private String cmplx_PoS;
 
-        private Node(Object o){
+        Node(Object o){
 
             this.child = new ArrayList<Node>();
             this.obj = o;
+            this.cmplx_PoS = o.getClass().getName();
 
         }
         public void addNode(Object o){
-
             this.child.add(new Node(o));
-
         }
 
         public void addNode(Node n){
@@ -113,6 +123,15 @@ public class ParseTree {
             return this.obj;
 
         }
+
+        public List<Node> getChildren(){
+            return this.child;
+        }
+
+        public String getPartOfSpeech(){
+            return cmplx_PoS;
+        }
+
 
     }
 

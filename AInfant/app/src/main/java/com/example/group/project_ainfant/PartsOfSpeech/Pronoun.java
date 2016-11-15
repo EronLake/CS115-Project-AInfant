@@ -25,8 +25,7 @@ public class Pronoun extends Word{
     public static int singVPlur;
 
     public Pronoun(String name_, int subVObj_, int gender_, int singVPlur_){
-        //allows to also use the word constructor as defult(may need to change)
-        super();
+
         //Constructor for Pronoun
         this.name = name_;
         this.subVObj = subVObj_;

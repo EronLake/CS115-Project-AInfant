@@ -14,8 +14,7 @@ public class Interjection extends Word {
     public static int type;
 
     public Interjection(String name_, int type_){
-        //allows to also use the word constructor as defult(may need to change)
-        super();
+
         //Constructor for Interjection
         this.name = name_;
         this.type = type_;

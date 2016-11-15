@@ -24,8 +24,7 @@ public class Noun extends Word {
     public static int singVPlur;
 
     public Noun(String name_, int type_,int propVimp_, int singVPlur_){
-        //allows to also use the word constructor as defult(may need to change)
-        super();
+
         //Constructor for Noun
         this.name = name_;
         this.type = type_;

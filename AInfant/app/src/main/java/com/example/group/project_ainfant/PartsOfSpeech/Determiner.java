@@ -13,8 +13,7 @@ public class Determiner extends Word {
     public static int singVPlur;
 
     public Determiner(String name_, int singVPlur_){
-        //allows to also use the word constructor as defult(may need to change)
-        super();
+
         //Constructor for Determiner
         this.name = name_;
         this.singVPlur = singVPlur_;

@@ -2,6 +2,7 @@ package com.example.group.project_ainfant;
 
 import android.util.Log;
 
+import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
 import java.util.Hashtable;
@@ -56,5 +57,28 @@ public class Test {
     */
         List<Word> word_list;
         return true;
+    }
+
+    //test method for the constructObject function
+    public boolean checkRulesTest() {
+        //Creates method input
+        Noun test =  new Noun("test",0,3,5);
+
+        ParseTree.Node cur_node = new ParseTree.Node(test);
+        ParseTree.Node next_node = new ParseTree.Node(test);
+
+
+        SyntaxRules rules =  new SyntaxRules();
+        //calls the construct object method
+        boolean results = rules.checkRules(cur_node,next_node);
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "checkRulesTest() returned false");
+            return false;
+        }else {
+            Log.d(TAG, "checkRulesTest() returned true");
+            //Log.d(TAG, toString(results));
+            return true;
+        }
     }
 }

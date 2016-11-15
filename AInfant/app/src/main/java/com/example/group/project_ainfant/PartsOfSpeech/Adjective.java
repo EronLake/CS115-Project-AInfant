@@ -13,8 +13,7 @@ public class Adjective extends Word{
     public static int posNegNeu;
 
     public Adjective(String name_, int posNegNeu_){
-        //allows to also use the word constructor as defult(may need to change)
-        super();
+
         //Constructor for Adjective
         this.name = name_;
         this.posNegNeu = posNegNeu_;
