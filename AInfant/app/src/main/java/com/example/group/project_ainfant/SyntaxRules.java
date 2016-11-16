@@ -139,6 +139,17 @@ public class SyntaxRules {
                 }else {
                     return "Error in Preposition Case";
                 }
+            case "Compound_Noun_Part":
+                switch (next_node_PoS) {
+                    case "Compound_Noun_Part":
+                        return "Noun";
+                    case "Noun":
+                        return "Compound_Noun_Part";
+                    default:
+                        return "Error in Noun Case";
+                }
+            case "Prepositional_Phrase":
+                return "Error in Noun Case";
         }
         return "Error: the first node type is not recognized";
     }
