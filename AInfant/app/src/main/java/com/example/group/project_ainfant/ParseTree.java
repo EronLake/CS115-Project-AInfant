@@ -30,7 +30,7 @@ public class ParseTree {
     3. I also made a constructor for the parseTree
      */
 
-    private Node parent;
+    public Node parent;
     public List<Node> SRList;
     public List<Node> Temp;
 

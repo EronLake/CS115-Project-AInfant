@@ -22,11 +22,28 @@ public class SyntaxCheck {
 
     public boolean ListSweep(){
 
+        SyntaxRules sr = new SyntaxRules();
+
         boolean if_shift_reduced = false;
 
         for(int sweep_ptr = 0; sweep_ptr < p.SRList.size(); sweep_ptr++ ){
         // gets lookahead
-        ParseTree.Node next_node = p.getNode(sweep_ptr);
+        ParseTree.Node curr_node = p.getNode(sweep_ptr);
+        p.adoptToPtr(curr_node);
+
+
+        for(int ptrNxt = sweep_ptr +1;ptrNxt < p.SRList.size(); ptrNxt++){
+            ParseTree.Node next_node = p.getNode(ptrNxt);
+            if(sr.checkRules(curr_node,next_node)){
+                p.adoptToPtr(next_node);
+            }
+            else{
+                if(p.parent.getChildren().size() == 1)
+                {
+                     p.shiftReduce(p.parent.getChildren(),p.);
+                }
+            }
+        }
 
         //check if you can shift reduce or not
 
@@ -40,7 +57,7 @@ public class SyntaxCheck {
             //check rules
         }
 
-        return true;
+        return if_shift_reduced;
     }
 
 
