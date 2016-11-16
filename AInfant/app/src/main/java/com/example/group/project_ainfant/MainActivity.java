@@ -30,6 +30,11 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //DO NOT REMOVE:this is for testing proposes
+        Test testRunner = new Test();
+        testRunner.constructObjectTest();
+        testRunner.checkRulesTest();
+
 
         myDb = new DatabaseHelper(this);
 
@@ -39,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
         buttonViewAll = (Button)findViewById(R.id.view_all);
         addData();
         viewAll();
+
 
     }
 

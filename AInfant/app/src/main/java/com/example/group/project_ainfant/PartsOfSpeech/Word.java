@@ -37,6 +37,12 @@ public class Word {
         } else if (PoS.equals("Interjection")){
             Interjection new_Word = new Interjection(word, Tags.get("singVPlur"));
             return new_Word;
+        }  else if (PoS.equals("Conjunction")){
+            Conjunction new_Word = new Conjunction (word, Tags.get("cordVSub"), Tags.get("andVBut"));
+            return new_Word;
+        }  else if (PoS.equals("Preposition")){
+            Preposition new_Word = new Preposition(word, Tags.get("type"));
+            return new_Word;
         }
         return null; // Returns null if PoS is not recognized
     }

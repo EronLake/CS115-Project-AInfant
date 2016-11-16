@@ -74,6 +74,8 @@ public class Test {
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "checkRulesTest() returned false");
+            Log.d(TAG, "cur_node: " + cur_node.getPartOfSpeech() + ", " +
+                    "next_node: " + next_node.getPartOfSpeech());
             return false;
         }else {
             Log.d(TAG, "checkRulesTest() returned true");
