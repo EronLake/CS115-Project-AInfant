@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import static com.example.group.project_ainfant.R.id.inputText;
+import static com.example.group.project_ainfant.R.id.input_text;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
 
         myDb = new DatabaseHelper(this);
 
-        input = (EditText)findViewById(inputText);
+        input = (EditText)findViewById(input_text);
         buttonUserInput = (Button)findViewById(R.id.button_enter);
         buttonAddData = (Button)findViewById(R.id.button_add);
         buttonViewAll = (Button)findViewById(R.id.view_all);
@@ -74,8 +74,9 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
                             boolean isInserted = myDb.insertData(input.getText().toString());
-                            Intent myIntent = new Intent(v.getContext(), DropDownMenu.class);
-                            startActivityForResult(myIntent, 0);
+                            // Initialize Intent object for new activity
+                            Intent drop_menu = new Intent(v.getContext(), DropDownMenu.class);
+                            startActivityForResult(drop_menu, 0);
                             /*if (isInserted = true)
                                 Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                             else
