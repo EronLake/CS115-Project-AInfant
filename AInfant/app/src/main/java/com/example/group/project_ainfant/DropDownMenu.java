@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-
+import com.example.group.project_ainfant.PartsOfSpeech.*;
 
 public class DropDownMenu extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
@@ -49,15 +49,31 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         // Since the spinner items are stored inside an array
         // we can get the selected item text such as item.get(position)
         String word = spinner.getSelectedItem().toString();
-        if (word.contentEquals("Adjective")) {
+        if ( word.contentEquals("Adjective") ) {
             ArrayList<String> options = new ArrayList<>();
-            options.add(0, "Positive");
-            options.add(1, "Negative");
-            options.add(2, "Neutral");
+
+            Adjective adj = new Adjective(word, -1); // Set initial value to null
+            options.add("Positive");
+            options.add("Negative");
+            options.add("Neutral");
+
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            String tag = spinner2.getSelectedItem().toString();
+
+            // Sets Adjective's connotation
+            if ( tag.equals("Positive") ) {
+                adj.posNegNeu = 0;
+            } else if ( tag.equals("Negative")){
+                adj.posNegNeu = 1;
+            } else if ( tag.equals("Neutral")){
+                adj.posNegNeu = 2;
+            }
+            //adj is the finished adjective
+            //CODE FOR ADDING TO DATABASE *** myDB.add(adj);
         }
         if (word.contentEquals("Adverb")) {
             ArrayList<String> options = new ArrayList<>();
