@@ -105,7 +105,7 @@ public class ParseTree {
 
             this.child = new ArrayList<Node>();
             this.obj = o;
-            this.cmplx_PoS = o.getClass().getName();
+            this.cmplx_PoS = o.getClass().getSimpleName();
 
         }
         public void addNode(Object o){
