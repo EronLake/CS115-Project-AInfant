@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class DropDownMenu extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner spinner, spinner2;
+    private Spinner spinner, spinner2, spinner3;
     private ArrayList<String> parts_of_speech;
     DatabaseHelper myDb;
 
@@ -42,11 +42,13 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         parts_of_speech = new ArrayList<>();
         parts_of_speech.add("Adjective");
         parts_of_speech.add("Adverb");
+        parts_of_speech.add("Conjunction");
         parts_of_speech.add("Determiner");
         parts_of_speech.add("Interjection");
         parts_of_speech.add("Noun");
         parts_of_speech.add("Pronoun");
         parts_of_speech.add("Verb");
+
 
         // To populate the spinner with a list of choices, you need to specify a SpinnerAdapter in your Activity or Fragment
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, parts_of_speech);
@@ -101,7 +103,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             options.add("Negative");
             options.add("Neutral");
 
-
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
@@ -116,60 +117,134 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             } else if ( tag.equals("Neutral")){
                 adv.posNegNeu = 2;
             }
+            // adv is the finished Adverb
+            myDb.addAdverb(adv);
 
-        } else if (PoS.contentEquals("Conjunction")) {
+//Conjunction makes AInfant crash. Needs fix to the multiple drop down menus.
+/* --------- beginning of crash
+            E/AndroidRuntime: FATAL EXCEPTION: main
+            java.lang.NullPointerException: Attempt to invoke virtual method 'void android.widget.Spinner.setAdapter(android.widget.SpinnerAdapter)' on a null object reference
+            at com.example.group.project_ainfant.DropDownMenu.onItemSelected(DropDownMenu.java:150)*/
+
+        /*} else if (PoS.contentEquals("Conjunction")) {
             ArrayList<String> options = new ArrayList<>();
 
-            
+            Conjunction conj = new Conjunction(PoS, -1, -1);
             options.add("Coordinating");
             options.add("Subordinating");
-            options.add("AND, OR, NOR");
-            options.add("BUT, FOR, YET");
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-        }
-        if (PoS.contentEquals("Determiner")) {
+
+            String tag1 = spinner2.getSelectedItem().toString();
+
+            if(tag1.equals("Coordinating")){
+                conj.cordVSub = 0;
+            } else if (tag1.equals("Subordinating")){
+                conj.cordVSub = 1;
+            }
+
+            ArrayList<String> options2 = new ArrayList<>();
+
+            options2.add("AND, OR, NOR");
+            options2.add("BUT, FOR, YET");
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+
+            String tag2 = spinner3.getSelectedItem().toString();
+
+            if (tag2.equals("AND, OR, NOR")){
+                conj.andVBut = 2;
+            } else if (tag2.equals("BUT, FOR, YET")){
+                conj.andVBut = 3;
+            }*/
+            // myDb.addConjuction(conj);
+
+        } else if (PoS.contentEquals("Determiner")) {
             ArrayList<String> options = new ArrayList<>();
+
+            Determiner det = new Determiner(PoS, -1);
 
             options.add("Plural");
             options.add("Singular");
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-        }
-        if (PoS.contentEquals("Interjection")) {
+
+            String tag = spinner2.getSelectedItem().toString();
+
+            if (tag.equals("Plural")) {
+                det.singVPlur = 0;
+            } else if (tag.equals("Singular")) {
+                det.singVPlur = 1;
+            }
+        } else if (PoS.contentEquals("Interjection")) {
             ArrayList<String> options = new ArrayList<>();
+
+            Interjection inject = new Interjection(PoS, -1);
+
             options.add("Greeting");
             options.add("Exclamation");
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-        }
-        if (PoS.contentEquals("Noun")) {
+
+            String tag = spinner2.getSelectedItem().toString();
+
+            if (tag.equals("Greeting")){
+                inject.type = 0;
+            } else if (tag.equals("Exclamation")){
+                inject.type = 1;
+            }
+            myDb.addInterjection(inject);
+
+        }else if (PoS.contentEquals("Noun")) {
             ArrayList<String> options = new ArrayList<>();
+
+            Noun noun = new Noun(PoS, -1, -1, -1);
+
             options.add("Thing");
             options.add("Person");
             options.add("Place");
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-        }
-        if (PoS.contentEquals("Preposition")) {
+            // Add multiple drop down menus
+        } else if (PoS.contentEquals("Preposition")) {
             ArrayList<String> options = new ArrayList<>();
+
+            Preposition prep = new Preposition(PoS, -1);
+
             options.add("Location");
             options.add("Time");
             options.add("Other");
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-        }
-        if (PoS.contentEquals("Pronoun")) {
+
+            String tag = spinner2.getSelectedItem().toString();
+
+            if (tag.equals("Location")){
+                prep.type = 0;
+            } else if (tag.equals("Time")){
+                prep.type = 1;
+            } else if (tag.equals("Other")){
+                prep.type = 2;
+            }
+            //myDb.addPrepostion;
+        } else if (PoS.contentEquals("Pronoun")) {
             ArrayList<String> options = new ArrayList<>();
             options.add("Subject");
             options.add("Object");
@@ -177,15 +252,27 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-        }
-        if (PoS.contentEquals("Verb")) {
+        } else if (PoS.contentEquals("Verb")) {
             ArrayList<String> options = new ArrayList<>();
+
+            Verb verb = new Verb(PoS, -1);
+
             options.add("Active");
             options.add("Passive");
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+
+            String tag = spinner2.getSelectedItem().toString();
+
+            if (tag.equals("Active")){
+                verb.actVPass = 0;
+            } else if (tag.equals("Passive")){
+                verb.actVPass = 1;
+            }
+            myDb.addVerb(verb);
         }
     }
 
