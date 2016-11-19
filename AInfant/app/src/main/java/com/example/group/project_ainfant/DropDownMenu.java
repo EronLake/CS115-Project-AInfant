@@ -27,10 +27,11 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
     private Spinner spinner, spinner2;
     private ArrayList<String> parts_of_speech;
-
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        myDb = new DatabaseHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drop_down_menu);
         spinner = (Spinner) findViewById(R.id.spin);
@@ -90,7 +91,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                 adj.posNegNeu = 2;
             }
             // adj is the finished adjective
-            //addAdjective(adj);
+            myDb.addAdjective(adj);
 
         } else if (PoS.contentEquals("Adverb")) {
             ArrayList<String> options = new ArrayList<>();
