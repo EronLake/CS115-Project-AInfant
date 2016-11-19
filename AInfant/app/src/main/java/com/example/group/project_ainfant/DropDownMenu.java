@@ -95,16 +95,31 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         } else if (PoS.contentEquals("Adverb")) {
             ArrayList<String> options = new ArrayList<>();
 
-
+            Adverb adv = new Adverb(PoS, -1);
             options.add("Positive");
             options.add("Negative");
             options.add("Neutral");
+
+
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+
+            String tag = spinner2.getSelectedItem().toString();
+
+            if ( tag.equals("Positive") ) {
+                adv.posNegNeu = 0;
+            } else if ( tag.equals("Negative")){
+                adv.posNegNeu = 1;
+            } else if ( tag.equals("Neutral")){
+                adv.posNegNeu = 2;
+            }
+
         } else if (PoS.contentEquals("Conjunction")) {
             ArrayList<String> options = new ArrayList<>();
+
+            
             options.add("Coordinating");
             options.add("Subordinating");
             options.add("AND, OR, NOR");
@@ -116,6 +131,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         }
         if (PoS.contentEquals("Determiner")) {
             ArrayList<String> options = new ArrayList<>();
+
             options.add("Plural");
             options.add("Singular");
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
