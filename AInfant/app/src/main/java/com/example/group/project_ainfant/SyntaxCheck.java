@@ -24,7 +24,7 @@ public class SyntaxCheck {
         while(ListSweep()){
 
         }
-        if(p.SRList.get(0).getNodeData().equals("Sentence")){
+        if(p.SRList.size() == 2){
             return true;
         }
         else{

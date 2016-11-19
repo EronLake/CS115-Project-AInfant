@@ -167,6 +167,7 @@ public class MainActivity extends ActionBarActivity {
     }
     //String [] tok = sentence.split("\\W+");
     //Database to String input validation
+
     public boolean validateInput(String[] tokens){
 
         for(String s: tokens){
