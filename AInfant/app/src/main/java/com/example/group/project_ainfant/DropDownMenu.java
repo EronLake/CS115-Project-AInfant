@@ -11,15 +11,11 @@ import android.widget.Spinner;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
 import com.example.group.project_ainfant.PartsOfSpeech.Adverb;
-import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
 import com.example.group.project_ainfant.PartsOfSpeech.Interjection;
 import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
-import com.example.group.project_ainfant.PartsOfSpeech.Pronoun;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
-
-
 
 import java.util.ArrayList;
 

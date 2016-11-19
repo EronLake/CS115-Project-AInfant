@@ -1,7 +1,5 @@
 package com.example.group.project_ainfant;
 
-import com.example.group.project_ainfant.PartsOfSpeech.Word;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +34,7 @@ public class ParseTree {
 
     public ParseTree(List<Object> word_list){
         for (Object word:word_list) {
-            Node word_node = newNode(word);
+            Node word_node = new Node(word);
             SRList.add(word_node);
         }
     }
@@ -47,20 +45,16 @@ public class ParseTree {
         return node;
     }
 
-    //creates a node from an object
-    public Node newNode(Object o){
-        Node n = new Node(o);
-        return n;
-    }
     //as you Use the Look Ahead and go through the
     public void adoptToPtr(Node n){
         this.parent.addNode(n);
     }
 
     //use the ptr to shift reduce.
-    public void shiftReduce(List<Node> childrenNodes,String phrase){
+    public void shiftReduce(List<Node> childrenNodes,String cmplx_PoS){
 
-        Node srnode = newNode(phrase);
+        Node srnode = new Node(cmplx_PoS);
+        srnode.cmplx_PoS = cmplx_PoS;
         for(Node n: childrenNodes){
             srnode.addNode(n);
         }

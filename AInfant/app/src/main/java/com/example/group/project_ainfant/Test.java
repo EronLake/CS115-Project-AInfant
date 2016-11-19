@@ -2,6 +2,7 @@ package com.example.group.project_ainfant;
 
 import android.util.Log;
 
+import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
 import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
@@ -79,6 +80,32 @@ public class Test {
             return false;
         }else {
             Log.d(TAG, "checkRulesTest() returned true");
+            //Log.d(TAG, toString(results));
+            return true;
+        }
+    }
+
+    //test method for the constructObject function
+    public boolean getShiftReduceNameTest() {
+        //Creates method input
+        Noun test =  new Noun("test",0,3,5);
+        Adjective test2 =  new Adjective("test",0);
+
+        ParseTree.Node cur_node = new ParseTree.Node(test2);
+        ParseTree.Node next_node = new ParseTree.Node(test);
+
+
+        SyntaxRules rules =  new SyntaxRules();
+        //calls the construct object method
+        String results = rules.getShiftReduceName(cur_node,next_node);
+        //checks output for desired results
+        if (results == "Compound_Noun_Front"){
+            Log.d(TAG, "getShiftReduceNameTest() returned " + results);
+            Log.d(TAG, "cur_node: " + cur_node.getPartOfSpeech() + ", " +
+                    "next_node: " + next_node.getPartOfSpeech());
+            return false;
+        }else {
+            Log.d(TAG, "getShiftReduceNameTest() returned " + results);
             //Log.d(TAG, toString(results));
             return true;
         }
