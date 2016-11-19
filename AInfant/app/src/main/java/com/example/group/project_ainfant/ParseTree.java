@@ -34,8 +34,8 @@ public class ParseTree {
     public List<Node> SRList;
     public List<Node> Temp;
 
-    public ParseTree(List<Word> word_list){
-        for (Word word:word_list) {
+    public ParseTree(List<Object> word_list){
+        for (Object word:word_list) {
             Node word_node = newNode(word);
             SRList.add(word_node);
         }
@@ -58,25 +58,22 @@ public class ParseTree {
     }
 
     //use the ptr to shift reduce.
-    public void shiftReduce(List<Node> nds,Node node){
+    public void shiftReduce(List<Node> childrenNodes,String phrase){
 
-        Node srnode = newNode(node.getNodeData());
-        for(Node n: nds){
+        Node srnode = newNode(phrase);
+        for(Node n: childrenNodes){
             srnode.addNode(n);
         }
         Temp.add(srnode);
 
     }
-
-    //empties the SRList
-    public void clearSRList() {
-        this.SRList.clear();
+    public void noshift(Node n){
+        Temp.add(n);
     }
-
     //sets the SRList and updates it to the temp list before it is cleared
     public void updateSRList(){
         this.SRList = this.Temp;
-
+        this.Temp.clear();
     }
 
     public boolean canAdopt(Node next_node){

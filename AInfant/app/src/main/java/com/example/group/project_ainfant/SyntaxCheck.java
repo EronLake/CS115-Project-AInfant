@@ -14,9 +14,26 @@ public class SyntaxCheck {
 
     ParseTree p;
 
-    SyntaxCheck(List<Word> w){
+    SyntaxCheck(List<Object> w){
 
         ParseTree p = new ParseTree(w);
+
+    }
+
+    //Need to make test for both function.
+    public boolean isValidSentence(){
+
+        while(ListSweep()){
+
+        }
+        if(p.SRList.get(0).getNodeData().equals("Sentence")){
+            return true;
+        }
+        else{
+
+            return false;
+
+        }
 
     }
 
@@ -31,19 +48,17 @@ public class SyntaxCheck {
         ParseTree.Node curr_node = p.getNode(sweep_ptr);
         p.adoptToPtr(curr_node);
 
-
-        for(int ptrNxt = sweep_ptr +1;ptrNxt < p.SRList.size(); ptrNxt++){
-            ParseTree.Node next_node = p.getNode(ptrNxt);
+            ParseTree.Node next_node = p.getNode(sweep_ptr+1);
             if(sr.checkRules(curr_node,next_node)){
                 p.adoptToPtr(next_node);
+                p.shiftReduce(p.parent.getChildren(),sr.getShiftReduceName(curr_node,next_node));
+                if_shift_reduced = true;
+                sweep_ptr++;
             }
             else{
-                if(p.parent.getChildren().size() == 1)
-                {
-                     p.shiftReduce(p.parent.getChildren(),p.);
-                }
+                p.noshift(curr_node);
             }
-        }
+
 
         //check if you can shift reduce or not
 
@@ -56,11 +71,9 @@ public class SyntaxCheck {
                 //else continue;
             //check rules
         }
-
+        p.updateSRList();
         return if_shift_reduced;
     }
-
-
 
 
 }
