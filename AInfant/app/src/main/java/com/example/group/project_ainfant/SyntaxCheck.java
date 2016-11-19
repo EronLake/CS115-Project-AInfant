@@ -1,6 +1,8 @@
 package com.example.group.project_ainfant;
 
 
+import com.example.group.project_ainfant.PartsOfSpeech.Word;
+
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ public class SyntaxCheck {
 
     ParseTree p;
 
-    SyntaxCheck(List<Object> w){
+    SyntaxCheck(List<Word> w){
 
         ParseTree p = new ParseTree(w);
 

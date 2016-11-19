@@ -3,9 +3,13 @@ package com.example.group.project_ainfant;
 import android.util.Log;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
+import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
 import com.example.group.project_ainfant.PartsOfSpeech.Noun;
+import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
+import com.example.group.project_ainfant.PartsOfSpeech.Verb;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -106,6 +110,41 @@ public class Test {
             return false;
         }else {
             Log.d(TAG, "getShiftReduceNameTest() returned " + results);
+            //Log.d(TAG, toString(results));
+            return true;
+        }
+    }
+
+    //test method for the constructObject function
+    public boolean isValidSentenceTest() {
+
+        //create our word variables
+        Noun test =  new Noun("I",0,3,5);
+        Verb test2 =  new Verb("ran",0);
+        Preposition test3 =  new Preposition("to",0);
+        Determiner test4 =  new Determiner("the",0);
+        Noun test5 =  new Noun("Store",0,3,5);
+
+        //add them to our input list
+        List<Word> input_list = new ArrayList<Word>();
+        input_list.add(test);
+        input_list.add(test2);
+        input_list.add(test3);
+        input_list.add(test4);
+        input_list.add(test5);
+
+        //Log.d(TAG, input_list.get());
+        //create syntax checker object with input list inside
+        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+
+        //calls the isValidSentence Function
+        boolean results = syntax_checker.isValidSentence();
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "isValidSentenceTest() returned " + results);
+            return false;
+        }else {
+            Log.d(TAG, "isValidSentenceTest() returned " + results);
             //Log.d(TAG, toString(results));
             return true;
         }
