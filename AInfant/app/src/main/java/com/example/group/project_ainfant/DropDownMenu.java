@@ -79,14 +79,15 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
             // Initialize selected item in second drop down menu
             String tag = spinner2.getSelectedItem().toString();
+            System.out.println(tag);
 
             // Sets Adjective's connotation
-            if ( tag.equals("Positive") ) {
-                adj.posNegNeu = 0;
-            } else if ( tag.equals("Negative")){
-                adj.posNegNeu = 1;
-            } else if ( tag.equals("Neutral")){
-                adj.posNegNeu = 2;
+            if (tag.contentEquals("Positive") ) {
+                adj.posNegNeu = 5;
+            } else if ( tag.contentEquals("Negative")){
+                adj.posNegNeu = 88;
+            } else if ( tag.contentEquals("Neutral")){
+                adj.posNegNeu = 23;
             }
             // adj is the finished adjective
             myDb.addAdjective(adj);
@@ -180,6 +181,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             } else if (tag.equals("Singular")) {
                 det.singVPlur = 1;
             }
+            myDb.addDeterminer(det);
+
         } else if (PoS.contentEquals("Interjection")) {
             ArrayList<String> options = new ArrayList<>();
 
@@ -215,7 +218,54 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-            // Add multiple drop down menus
+
+            String tag1 = spinner2.getSelectedItem().toString();
+
+            if(tag1.equals("Thing")){
+                noun.type=0;
+            } else if (tag1.equals("Person")){
+                noun.type=1;
+            } else if (tag1.equals("Place")){
+                noun.type=2;
+            }
+
+            ArrayList<String> options2 = new ArrayList<>();
+
+            options2.add("Proper");
+            options2.add("Improper");
+
+
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+
+            String tag2 = spinner3.getSelectedItem().toString();
+
+            if(tag2.equals("Proper")){
+                noun.propVImp=3;
+            } else if (tag2.equals("Improper")){
+                noun.propVImp=4;
+            }
+
+            ArrayList<String> options3 = new ArrayList<>();
+
+            options3.add("Plural");
+            options3.add("Singular");
+
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter3);
+
+            String tag3 = spinner3.getSelectedItem().toString();
+
+            if (tag3.equals("Plural")){
+                noun.singVPlur = 5;
+            } else if (tag3.equals("Singular")){
+                noun.singVPlur = 6;
+            }
+            myDb.addNoun(noun);
         } else if (PoS.contentEquals("Preposition")) {
             ArrayList<String> options = new ArrayList<>();
 
