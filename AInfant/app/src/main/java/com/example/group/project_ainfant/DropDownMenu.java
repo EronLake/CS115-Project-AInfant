@@ -104,6 +104,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);
 
             String tag = spinner2.getSelectedItem().toString();
 
