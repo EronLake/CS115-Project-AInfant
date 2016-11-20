@@ -19,6 +19,7 @@ import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
 import com.example.group.project_ainfant.PartsOfSpeech.Interjection;
 import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
+import com.example.group.project_ainfant.PartsOfSpeech.Pronoun;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
 
 import java.util.ArrayList;
@@ -69,22 +70,78 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                     public void onClick(View v) {
                         String pos = spinner.getSelectedItem().toString();
                         //Log.d("tag",pos);
-                        if(pos.equals("Adverb")){
+                        if (pos.equals("Adverb")) {
                             Adverb adv = new Adverb(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
-                            if (tag.contentEquals("Positive") ) {
+                            if (tag.contentEquals("Positive")) {
                                 adv.posNegNeu = 0;
-                            } else if ( tag.contentEquals("Negative")){
+                            } else if (tag.contentEquals("Negative")) {
                                 adv.posNegNeu = 1;
-                            } else if ( tag.contentEquals("Neutral")){
+                            } else if (tag.contentEquals("Neutral")) {
                                 adv.posNegNeu = 2;
                             }
-                            Log.d("adverb name",adv.name);
-                            Log.d("adverb type",Integer.toString(adv.posNegNeu));
+                            Log.d("adverb name", adv.name);
+                            Log.d("adverb type", Integer.toString(adv.posNegNeu));
                             myDb.addAdverb(adv);
                             finish();
+                        } else if (pos.equals("Adjective")) {
+                            Adjective adj = new Adjective(word, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.contentEquals("Positive")) {
+                                adj.posNegNeu = 0;
+                            } else if (tag.contentEquals("Negative")) {
+                                adj.posNegNeu = 1;
+                            } else if (tag.contentEquals("Neutral")) {
+                                adj.posNegNeu = 2;
+                            }
+                            Log.d("adj name", adj.name);
+                            Log.d("adj type", Integer.toString(adj.posNegNeu));
+                            myDb.addAdjective(adj);
+                            finish();
+                        } else if (pos.equals("Determiner")) {
+                            Determiner det = new Determiner(word, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Plural")) {
+                                det.singVPlur = 0;
+                            } else if (tag.equals("Singular")) {
+                                det.singVPlur = 1;
+                            }
+                            Log.d("adj name", det.name);
+                            Log.d("adj type", Integer.toString(det.singVPlur));
+                            myDb.addDeterminer(det);
+                            finish();
+                        } else if (pos.equals("Interjection")) {
+                            Interjection inject = new Interjection(word, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Greeting")) {
+                                inject.type = 0;
+                            } else if (tag.equals("Exclamation")) {
+                                inject.type = 1;
+                            }
+                            myDb.addInterjection(inject);
+                            finish();
+                        } else if (pos.equals("Preposition")) {
+                            Preposition prep = new Preposition(word, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Location")) {
+                                prep.type = 0;
+                            } else if (tag.equals("Time")) {
+                                prep.type = 1;
+                            } else if (tag.equals("Other")) {
+                                prep.type = 2;
+                            }
+                            //myDb.addPrepostion(prep);
+                            finish();
+                        } else if (pos.equals("Verb")) {
+                            Verb verb = new Verb(word, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Active")) {
+                                verb.actVPass = 0;
+                            } else if (tag.equals("Passive")) {
+                                verb.actVPass = 1;
+                            }
+                            myDb.addVerb(verb);
                         }
-
                     }
                 }
         );
@@ -146,7 +203,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);
 
-            //String tag = spinner2.getSelectedItem().toString();
 
 //Conjunction makes AInfant crash. Needs fix to the multiple drop down menus.
 /* --------- beginning of crash
@@ -195,7 +251,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         } else if (PoS.contentEquals("Determiner")) {
             ArrayList<String> options = new ArrayList<>();
 
-            Determiner det = new Determiner(PoS, -1);
 
             options.add("Plural");
             options.add("Singular");
@@ -205,19 +260,11 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
 
-            String tag = spinner2.getSelectedItem().toString();
-
-            if (tag.equals("Plural")) {
-                det.singVPlur = 0;
-            } else if (tag.equals("Singular")) {
-                det.singVPlur = 1;
-            }
-            myDb.addDeterminer(det);
 
         } else if (PoS.contentEquals("Interjection")) {
             ArrayList<String> options = new ArrayList<>();
 
-            Interjection inject = new Interjection(PoS, -1);
+
 
             options.add("Greeting");
             options.add("Exclamation");
@@ -227,14 +274,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
 
-            String tag = spinner2.getSelectedItem().toString();
-
-            if (tag.equals("Greeting")){
-                inject.type = 0;
-            } else if (tag.equals("Exclamation")){
-                inject.type = 1;
-            }
-            myDb.addInterjection(inject);
 
         }else if (PoS.contentEquals("Noun")) {
             ArrayList<String> options = new ArrayList<>();
@@ -300,8 +339,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         } else if (PoS.contentEquals("Preposition")) {
             ArrayList<String> options = new ArrayList<>();
 
-            Preposition prep = new Preposition(PoS, -1);
-
             options.add("Location");
             options.add("Time");
             options.add("Other");
@@ -311,16 +348,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
 
-            String tag = spinner2.getSelectedItem().toString();
 
-            if (tag.equals("Location")){
-                prep.type = 0;
-            } else if (tag.equals("Time")){
-                prep.type = 1;
-            } else if (tag.equals("Other")){
-                prep.type = 2;
-            }
-            //myDb.addPrepostion;
         } else if (PoS.contentEquals("Pronoun")) {
             ArrayList<String> options = new ArrayList<>();
             options.add("Subject");
@@ -332,8 +360,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         } else if (PoS.contentEquals("Verb")) {
             ArrayList<String> options = new ArrayList<>();
 
-            Verb verb = new Verb(PoS, -1);
-
             options.add("Active");
             options.add("Passive");
 
@@ -342,14 +368,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
 
-            String tag = spinner2.getSelectedItem().toString();
-
-            if (tag.equals("Active")){
-                verb.actVPass = 0;
-            } else if (tag.equals("Passive")){
-                verb.actVPass = 1;
-            }
-            myDb.addVerb(verb);
         }
     }
 
