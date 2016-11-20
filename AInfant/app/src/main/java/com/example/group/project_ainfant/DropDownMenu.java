@@ -68,12 +68,21 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                     @Override
                     public void onClick(View v) {
                         String pos = spinner.getSelectedItem().toString();
-                        Log.d("tag",pos);
-
+                        //Log.d("tag",pos);
                         if(pos.equals("Adverb")){
                             Adverb adv = new Adverb(word, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.contentEquals("Positive") ) {
+                                adv.posNegNeu = 0;
+                            } else if ( tag.contentEquals("Negative")){
+                                adv.posNegNeu = 1;
+                            } else if ( tag.contentEquals("Neutral")){
+                                adv.posNegNeu = 2;
+                            }
                             Log.d("adverb name",adv.name);
-                            Log.d("Type",spinner2.getSelectedItem().toString() );
+                            Log.d("adverb type",Integer.toString(adv.posNegNeu));
+                            myDb.addAdverb(adv);
+                            finish();
                         }
 
                     }
@@ -137,18 +146,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);
 
-            String tag = spinner2.getSelectedItem().toString();
-/*
-            if ( tag.equals("Positive") ) {
-                adv.posNegNeu = 0;
-            } else if ( tag.equals("Negative")){
-                adv.posNegNeu = 1;
-            } else if ( tag.equals("Neutral")){
-                adv.posNegNeu = 2;
-            }
-            // adv is the finished Adverb
-            myDb.addAdverb(adv);
-*/
+            //String tag = spinner2.getSelectedItem().toString();
+
 //Conjunction makes AInfant crash. Needs fix to the multiple drop down menus.
 /* --------- beginning of crash
             E/AndroidRuntime: FATAL EXCEPTION: main
