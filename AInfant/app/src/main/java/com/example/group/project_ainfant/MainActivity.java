@@ -76,9 +76,13 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
                             boolean isInserted = myDb.insertData(input.getText().toString());
+                            String word = input.getText().toString();
                             // Initialize Intent object for new activity
+
                             Intent drop_menu = new Intent(v.getContext(), DropDownMenu.class);
+                            DropDownMenu.word = word;
                             startActivityForResult(drop_menu, 0);
+
                             /*if (isInserted = true)
                                 Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                             else

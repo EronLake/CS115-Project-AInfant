@@ -1,5 +1,6 @@
 package com.example.group.project_ainfant;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Button;
+import android.util.Log;
+
 
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
 import com.example.group.project_ainfant.PartsOfSpeech.Adverb;
@@ -21,9 +25,12 @@ import java.util.ArrayList;
 
 public class DropDownMenu extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
+    public static String word = "";
+
     private Spinner spinner, spinner2, spinner3;
     private ArrayList<String> parts_of_speech;
     DatabaseHelper myDb;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +57,31 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, parts_of_speech);
         // Set the adapter to the spinner
         spinner.setAdapter(adapter);
+        addListenerOnButton();
 
     }
+
+    public void addListenerOnButton() {
+        button = (Button) findViewById(R.id.button_add2);
+        button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String pos = spinner.getSelectedItem().toString();
+                        Log.d("tag",pos);
+
+                        if(pos.equals("Adverb")){
+                            Adverb adv = new Adverb(word, -1);
+                            Log.d("adverb name",adv.name);
+                            Log.d("Type",spinner2.getSelectedItem().toString() );
+                        }
+
+                    }
+                }
+        );
+    }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -95,7 +125,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         } else if (PoS.contentEquals("Adverb")) {
             ArrayList<String> options = new ArrayList<>();
 
-            Adverb adv = new Adverb(PoS, -1);
+
             options.add("Positive");
             options.add("Negative");
             options.add("Neutral");
@@ -108,7 +138,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             spinner2.setOnItemSelectedListener(this);
 
             String tag = spinner2.getSelectedItem().toString();
-
+/*
             if ( tag.equals("Positive") ) {
                 adv.posNegNeu = 0;
             } else if ( tag.equals("Negative")){
@@ -118,7 +148,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             }
             // adv is the finished Adverb
             myDb.addAdverb(adv);
-
+*/
 //Conjunction makes AInfant crash. Needs fix to the multiple drop down menus.
 /* --------- beginning of crash
             E/AndroidRuntime: FATAL EXCEPTION: main
