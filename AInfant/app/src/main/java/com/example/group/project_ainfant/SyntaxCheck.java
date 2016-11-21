@@ -16,7 +16,7 @@ public class SyntaxCheck {
 
     SyntaxCheck(List<Word> w){
 
-        ParseTree p = new ParseTree(w);
+        this.p = new ParseTree(w);
 
     }
 
@@ -45,17 +45,23 @@ public class SyntaxCheck {
 
         for(int sweep_ptr = 0; sweep_ptr < p.SRList.size(); sweep_ptr++ ){
             // gets lookahead
-            ParseTree.Node curr_node = p.getNode(sweep_ptr);
+            ParseTree.Node curr_node = p.SRList.get(sweep_ptr);
             //automatically adopt the first node
             p.adoptToPtr(curr_node);
             //get the second node in the list
-            ParseTree.Node next_node = p.getNode(sweep_ptr+1);
+            ParseTree.Node next_node;
+            if (p.SRList.size() - sweep_ptr <= 1) {
+                p.noshift(curr_node);
+                continue;
+            }else{
+                next_node = p.SRList.get(sweep_ptr + 1);
+            }
             //check if you can shift reduce using the checkrules function
             if(sr.checkRules(curr_node,next_node)){
                 //if can adopt then:
                 //adopt to parent node:
                 p.adoptToPtr(next_node);
-                //shipd reduce using :
+                //shift reduce using :
                 p.shiftReduce(p.parent.getChildren(),sr.getShiftReduceName(curr_node,next_node));
                 if_shift_reduced = true;
                 sweep_ptr++;
@@ -63,18 +69,6 @@ public class SyntaxCheck {
             else{
                 p.noshift(curr_node);
             }
-
-
-        //check if you can shift reduce or not
-
-            //call boolean canAdopt(next_node)
-                // canAdopt looks at parent node's child(current node)
-                // to determine if new_ode can be adopted
-
-                //if it can shift reduce and change if_shift_reduced = true
-
-                //else continue;
-            //check rules
         }
         p.updateSRList();
         return if_shift_reduced;

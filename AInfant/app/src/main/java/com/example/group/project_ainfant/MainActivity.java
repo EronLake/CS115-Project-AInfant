@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
         testRunner.constructObjectTest();
         testRunner.checkRulesTest();
         testRunner.getShiftReduceNameTest();
-        //testRunner.isValidSentenceTest();
+        testRunner.isValidSentenceTest();
 
 
         myDb = new DatabaseHelper(this);

@@ -136,16 +136,25 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest() returned " + results);
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest() returned " + results);
             //Log.d(TAG, toString(results));
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
             return true;
         }
     }

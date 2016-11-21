@@ -31,11 +31,12 @@ public class ParseTree {
     3. I also made a constructor for the parseTree
      */
 
-    public Node parent;
-    public List<Node> SRList;
-    public List<Node> Temp;
+    public Node parent = new Node(new Adjective("empty",0)) ;
+    public List<Node> SRList = new ArrayList<Node>();
+    public List<Node> Temp = new ArrayList<Node>();
 
     public ParseTree(List<Word> word_list){
+
         for (Word word:word_list) {
             Node word_node = new Node(word);
             // Node word_node = new Node(word_list.get(0));
@@ -46,13 +47,13 @@ public class ParseTree {
            // }
         }
     }
-
+/*
     //gets the node at the give ptr posiition
     public Node getNode(int ptr){
         Node node = SRList.get(ptr);
         return node;
     }
-
+*/
     //as you Use the Look Ahead and go through the
     public void adoptToPtr(Node n){
         this.parent.addNode(n);
@@ -76,8 +77,10 @@ public class ParseTree {
         Temp.add(n);
     }
     //sets the SRList and updates it to the temp list before it is cleared
+
+
     public void updateSRList(){
-        this.SRList = this.Temp;
+        this.SRList = new ArrayList<Node>(this.Temp);
         this.Temp.clear();
     }
 
