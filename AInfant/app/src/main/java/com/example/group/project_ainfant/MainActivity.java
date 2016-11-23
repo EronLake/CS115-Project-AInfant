@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
 
                             Intent drop_menu = new Intent(v.getContext(), DropDownMenu.class);
                             startActivityForResult(drop_menu, 0);
-
+                            DropDownMenu.counter = 0;
 
                         } else {
                             showMessage("Error", "Already in database");
