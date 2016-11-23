@@ -48,17 +48,23 @@ public class SyntaxCheck {
 
         for(int sweep_ptr = 0; sweep_ptr < p.SRList.size(); sweep_ptr++ ){
             // gets lookahead
-            ParseTree.Node curr_node = p.getNode(sweep_ptr);
+            ParseTree.Node curr_node = p.SRList.get(sweep_ptr);
             //automatically adopt the first node
             p.adoptToPtr(curr_node);
             //get the second node in the list
-            ParseTree.Node next_node = p.getNode(sweep_ptr+1);
+            ParseTree.Node next_node;
+            if (p.SRList.size() - sweep_ptr <= 1) {
+                p.noshift(curr_node);
+                continue;
+            }else{
+                next_node = p.SRList.get(sweep_ptr + 1);
+            }
             //check if you can shift reduce using the checkrules function
             if(sr.checkRules(curr_node,next_node)){
                 //if can adopt then:
                 //adopt to parent node:
                 p.adoptToPtr(next_node);
-                //shipd reduce using :
+                //shift reduce using :
                 p.shiftReduce(p.parent.getChildren(),sr.getShiftReduceName(curr_node,next_node));
                 if_shift_reduced = true;
                 sweep_ptr++;
