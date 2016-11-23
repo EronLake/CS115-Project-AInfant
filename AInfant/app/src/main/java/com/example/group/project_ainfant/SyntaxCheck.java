@@ -1,8 +1,6 @@
 package com.example.group.project_ainfant;
 
 
-import android.util.Log;
-
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
 import java.util.List;
@@ -11,11 +9,11 @@ import java.util.List;
  * Created by Robert on 11/6/2016.
  */
 //checks the grammar of the sentence and creates a parse tree for that sentence
-    //testing
+//testing
 public class SyntaxCheck {
 
     ParseTree p;
-    private static final String TAG = Test.class.getSimpleName();
+
     SyntaxCheck(List<Word> w){
 
         this.p = new ParseTree(w);
@@ -24,10 +22,9 @@ public class SyntaxCheck {
 
     //Need to make test for both function.
     public boolean isValidSentence(){
-        int pass = 1;
+
         while(ListSweep()){
-            Log.d(TAG, "ListSweep Pass: " + pass);
-            pass++;
+
         }
         if(p.SRList.size() == 2){
             return true;
@@ -72,7 +69,6 @@ public class SyntaxCheck {
             else{
                 p.noshift(curr_node);
             }
-
         }
         p.updateSRList();
         return if_shift_reduced;

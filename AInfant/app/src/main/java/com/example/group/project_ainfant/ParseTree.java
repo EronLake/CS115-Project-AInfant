@@ -28,10 +28,10 @@ public class ParseTree {
     3. I changed the name of empty to empty children for clarity
     4. Also I am making a test for the ParseTree Function that we are going to make
        So we can have a clear input and output established based off of our conversation
-    3. I also made a constructor for the parseTreel
+    3. I also made a constructor for the parseTree
      */
 
-
+    public Node parent = new Node(new Adjective("empty",0)) ;
     public List<Node> SRList = new ArrayList<Node>();
     public List<Node> Temp = new ArrayList<Node>();
 
@@ -43,17 +43,17 @@ public class ParseTree {
             //Adjective shift_reduce_obj = new Adjective("shift_reduce_node",0);
             //Node srnode = new Node(shift_reduce_obj);
             //if (word_node == null) {
-                SRList.add(word_node);
-           // }
+            SRList.add(word_node);
+            // }
         }
     }
-/*
-    //gets the node at the give ptr posiition
-    public Node getNode(int ptr){
-        Node node = SRList.get(ptr);
-        return node;
-    }
-*/
+    /*
+        //gets the node at the give ptr posiition
+        public Node getNode(int ptr){
+            Node node = SRList.get(ptr);
+            return node;
+        }
+    */
     //as you Use the Look Ahead and go through the
     public void adoptToPtr(Node n){
         this.parent.addNode(n);
@@ -142,4 +142,3 @@ public class ParseTree {
 
 
 }
-
