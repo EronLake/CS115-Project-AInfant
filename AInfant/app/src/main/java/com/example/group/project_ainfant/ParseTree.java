@@ -28,7 +28,7 @@ public class ParseTree {
     3. I changed the name of empty to empty children for clarity
     4. Also I am making a test for the ParseTree Function that we are going to make
        So we can have a clear input and output established based off of our conversation
-    3. I also made a constructor for the parseTree
+    3. I also made a constructor for the parseTreel
      */
 
 
