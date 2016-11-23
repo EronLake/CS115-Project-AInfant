@@ -1,0 +1,71 @@
+﻿Sprint Plan 2 
+AInfant
+Oct 20, 2016
+
+
+Goal: Have basic UI made in Android Studio, which will take input from user and store it in a database.
+
+
+Task listing, organized by user story: This section lists the user stories, in priority order from most important (top) to least important (bottom). Within each user story, there needs to be a list of tasks required to implement the user story, along with the time estimate for each tasks (preferably less than or equal to 6 ideal hours). This should look like: 
+
+
+
+
+
+
+1. As an app user, I need a basic user interface, so that the app is easy to use
+	2.  As a developer, I need to have a database setup so that the AI can store/retrieve data and information about the English language 
+
+
+	3. As a user of the app, I want to be able to teach the AI new grammatical structures so that i can use those structures when communicating
+	
+
+
+
+Implement dictionary search (checking database library to see if already exists)
+Design Database Structure(drawing)
+Implement new design of database (hard code)
+Alter related functions to accommodate new database structure
+
+
+Implement word teaching (add word to database)
+Implement validation functionality
+Add UI for appending words to specific database columns (example: nouns, locations, verbs)
+Brainstorm synonym implementation 
+
+
+Brainstorm of how to implement grammar checking
+Create Tokenizer for input 
+
+
+User Stories
+	Hours
+	As a developer, I need to have a database setup so that the AI can store/retrieve data and information about the English language
+	
+
+	Implement dictionary search GS
+	1hr
+	Design Database Structure(drawing)  MH, EL
+	hr
+	Implement new design of database (hard code) GS, MH, RM
+	2hrs
+	Alter related functions to accommodate new database structure GS, MH, RM
+	1hr
+	As a user of the app, I want to be able to teach the AI new words, so that it will be able to use those words when communicating
+	
+
+	Implement word teaching (add word to database) GS, MH, RM
+	1hr
+	Implement validation functionality  EL
+	1hr
+	Add UI for appending words to specific database columns (example: nouns, locations, verbs) GS, MH, RM
+	3 hrs
+	Brainstorm synonym implementation ALL
+	2hrs
+	As a user of the app, I want to be able to teach the AI new grammatical structures so that i can use those structures when communicating
+	
+
+	Brainstorm of how to implement grammar checking ALL
+	3hrs
+	Create Tokenizer for input RJ ty
+	4hrs
