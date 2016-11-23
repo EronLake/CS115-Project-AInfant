@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.group.project_ainfant.PartsOfSpeech.*;
+import java.util.*;
 import static com.example.group.project_ainfant.R.id.input_text;
 
 
@@ -76,17 +78,19 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
                             boolean isInserted = myDb.insertData(input.getText().toString());
-                            String word = input.getText().toString();
+                            String sentence = input.getText().toString();
                             // Initialize Intent object for new activity
 
+                            DropDownMenu.sentence = sentence;
+
+                            String [] tok = sentence.split("\\s+");
+                            List<Word> structure = new ArrayList<Word>();
+
+
                             Intent drop_menu = new Intent(v.getContext(), DropDownMenu.class);
-                            DropDownMenu.word = word;
                             startActivityForResult(drop_menu, 0);
 
-                            /*if (isInserted = true)
-                                Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
-                            else
-                                Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();*/
+
                         } else {
                             showMessage("Error", "Already in database");
                         }
@@ -153,25 +157,14 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //private TextView output;
-    /*public void buttonOnClick(View v){
+/*    private TextView output;
+    public void buttonOnClick(View v){
         Button button = (Button) v;
         input = (EditText) findViewById(R.id.inputText);
         output = (TextView) findViewById(R.id.outputText);
         output.setText(input.getText());
         validateInput(tokenize(input.getText().toString().trim()));
     }*/
-
-    //Tokenizes the input from the text field and returns it in an array
-    public String[] tokenize(String s){
-
-        String delim = "\\W+";
-        String[] tok = s.split(delim);
-        return tok;
-
-    }
-    //String [] tok = sentence.split("\\W+");
-    //Database to String input validation
 
     public boolean validateInput(String[] tokens){
 
@@ -187,6 +180,8 @@ public class MainActivity extends ActionBarActivity {
 
         return true;
     }
+
+
 
 
 }
