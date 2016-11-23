@@ -31,11 +31,13 @@ public class ParseTree {
     3. I also made a constructor for the parseTree
      */
 
-    public Node parent;
-    public List<Node> SRList;
-    public List<Node> Temp;
+    public Node parent = new Node(new Adjective("parent node",0));
+    public List<Node> SRList = new ArrayList<Node>();
+    public List<Node> Temp = new ArrayList<Node>();
 
     public ParseTree(List<Word> word_list){
+
+
         for (Word word:word_list) {
             Node word_node = new Node(word);
             // Node word_node = new Node(word_list.get(0));

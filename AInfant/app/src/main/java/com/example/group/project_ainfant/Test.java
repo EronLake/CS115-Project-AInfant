@@ -137,8 +137,11 @@ public class Test {
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
 
+        Log.d(TAG, "size before isValid: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
+
+        Log.d(TAG, "size after isValid: " + syntax_checker.p.SRList.size());
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest() returned " + results);
