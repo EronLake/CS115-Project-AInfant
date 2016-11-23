@@ -10,6 +10,12 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/outputText"
+        android:text=""/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Select part of speech:"/>
 
     <Spinner

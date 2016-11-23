@@ -1,0 +1,60 @@
+﻿Sprint 3 Report 
+AInfant
+11/23/16 
+
+
+ Actions to stop doing:
+
+
+* Stop going “ghost mode” on the Slack messenger. We need to know where everyone is at and if they can actually make the meetings that we schedule. If you are not able to make a meeting, you must communicate to the other members that you cannot 
+* Stop arriving to meetings 30+ minutes late. If you are arriving late you must inform the team members to know that we are expecting your arrival. The reason for this is almost every scrum meeting, someone shows up late and we waste a lot of time wondering where they are or sitting idle.
+* When someone has to leave a meeting early and doesn’t follow up or to catch up from other members about what they missed in the meeting. The reason for this is because many meetings are mostly taken up by catching up from other meetings for members that weren’t there.
+* Stop multitasking during meetings because we need everyone’s focus on the task at hand and sometimes people get too distracted.
+
+
+Actions to start doing: 
+        
+* Documenting the code as it is written. We should also be documenting our sprint tasks as we finish each sprint. 
+* Start writing more tests for our code. TDD is key for making sure our word objects are being entered into the database correctly and if our sentences are being grammatically checked (built in a grammar tree) correctly. 
+* We should be messaging more in slack about availability and schedules instead of ignoring messages. The reason for this is because we are always wondering if someone can show up or not.
+* Do more demonstrations/walk throughs of the code because it gives people a deeper understanding of the code.
+
+
+Actions to keep doing: 
+
+
+* Keep a working program pushed onto the master branch at all times. 
+* Keep organize group coding sessions because we are most productive when working together.
+* Maintain a steady workflow and avoid gaps of time without working on the program. 
+
+
+
+
+
+
+
+
+Work completed
+* As an app user, I need to have a second screen appear on the UI where I can “teach” the AI a word (construct a word) with its given attributes so I can add it to the database with all of its attributes/connotations. 
+   * Setup spinners in drop down menu where the user can select the given words/types and save their selections
+   * Read selected spinner values and pass into the respective word constructor (pass in correct strings to construct the word)
+   * Add an onClicklistener/button that will add the word into the database
+* As a developer, I need to build a parser that will construct a grammar tree out of the tokens inputted so we can identify the structure of each sentence. 
+   * Implement grammar rules that will be used  in order to parse the sentence (based off of previous brainstorm) 
+   * Create parsetree class that will be used for parsing the user’s input sentence
+   * Create the parsing helper class that will run the parsing function on the input sentences and build the parse tree
+* Implement a sentence tokenizer that will split the sentence into single words.
+* Implement ability to specify the Part of Speech of each word in a sentence.
+
+
+Work not completed:
+* As a user of the app, I want to be able to know if the sentence I entered is correct so that the AI will be able to communicate if it does not understand. 
+
+
+Work completion rate: 
+* 2 Stories were completed: 
+   * User stories 1 and 2 were completed but not all of the tasks for user story 3 were completed. 
+* About 20 work hours were completed during the prior sprint. 
+* 14 days
+* User Stories per day: 0.06 stories/day
+* Hours per day: 1.6 hours
