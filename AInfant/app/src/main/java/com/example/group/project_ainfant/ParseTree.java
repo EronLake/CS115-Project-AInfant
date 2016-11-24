@@ -43,17 +43,17 @@ public class ParseTree {
             //Adjective shift_reduce_obj = new Adjective("shift_reduce_node",0);
             //Node srnode = new Node(shift_reduce_obj);
             //if (word_node == null) {
-                SRList.add(word_node);
-           // }
+            SRList.add(word_node);
+            // }
         }
     }
-/*
-    //gets the node at the give ptr posiition
-    public Node getNode(int ptr){
-        Node node = SRList.get(ptr);
-        return node;
-    }
-*/
+    /*
+        //gets the node at the give ptr posiition
+        public Node getNode(int ptr){
+            Node node = SRList.get(ptr);
+            return node;
+        }
+    */
     //as you Use the Look Ahead and go through the
     public void adoptToPtr(Node n){
         this.parent.addNode(n);
@@ -142,4 +142,3 @@ public class ParseTree {
 
 
 }
-

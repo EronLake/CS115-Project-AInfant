@@ -29,6 +29,20 @@ public class SyntaxRules {
                     default:
                         return false;
                 }
+            case "Pronoun":
+                switch (next_node_PoS) {
+                    case "Noun":
+                        return true;
+                    case "Compound_Noun":
+                        return true;
+                    case "Compound_Noun_Back":
+                        return true;
+                    case "Compound_Noun_Front":
+                        return true;
+
+                    default:
+                        return false;
+                }
             case "Adjective":
                 switch (next_node_PoS) {
                     case "Noun":
@@ -41,7 +55,7 @@ public class SyntaxRules {
                         return false;
                 }
             case "Conjunction":
-                if (next_node_PoS.equals("Noun")) {
+                if (next_node_PoS.equals("Noun") || next_node_PoS.equals("Pronoun")) {
                     return true;
                 } else {
                     return false;
@@ -65,6 +79,10 @@ public class SyntaxRules {
                         return true;
                     case "Noun":
                         return true;
+                    case "Pronoun":
+                        return true;
+                    case "Adjective":
+                        return true;
                     default:
                         return false;
                 }
@@ -78,7 +96,7 @@ public class SyntaxRules {
                         return false;
                 }
             case "Preposition":
-                if (next_node_PoS.equals("Noun")) {
+                if (next_node_PoS.equals("Noun") || next_node_PoS.equals("Pronoun")) {
                     return true;
                 } else {
                     return false;
@@ -108,6 +126,8 @@ public class SyntaxRules {
                 }
             case "Verb_Phrase":
                 switch (next_node_PoS) {
+                    case "Prepositional_Phrase":
+                        return true;
                     default:
                         return false;
                 }
@@ -125,6 +145,24 @@ public class SyntaxRules {
             case "Noun":
                 switch (next_node_PoS) {
                     case "Noun":
+                        return "Compound_Noun_Front";
+                    case "Pronoun":
+                        return "Compound_Noun_Front";
+                    case "Compound_Noun":
+                        return "Compound_Noun";
+                    case "Compound_Noun_Back":
+                        return "Compound_Noun";
+                    case "Compound_Noun_Front":
+                        return "Compound_Noun_Front";
+
+                    default:
+                        return "Error in Noun Case";
+                }
+            case "Pronoun":
+                switch (next_node_PoS) {
+                    case "Noun":
+                        return "Compound_Noun_Front";
+                    case "Pronoun":
                         return "Compound_Noun_Front";
                     case "Compound_Noun":
                         return "Compound_Noun";
@@ -148,7 +186,7 @@ public class SyntaxRules {
                         return "Error in Adjective Case";
                 }
             case "Conjunction":
-                if (next_node_PoS.equals("Noun")) {
+                if (next_node_PoS.equals("Noun")||next_node_PoS.equals("Pronoun")) {
                     return "Compound_Noun_Back";
                 } else {
                     return "Error in Conjunction Case";
@@ -170,7 +208,11 @@ public class SyntaxRules {
                 switch (next_node_PoS) {
                     case "Prepositional_Phrase":
                         return "Verb_Phrase";
+                    case "Adjective":
+                        return "Verb_Phrase";
                     case "Noun":
+                        return "Verb_Phrase";
+                    case "Pronoun":
                         return "Verb_Phrase";
                     default:
                         return "Error in Verb Case";
@@ -185,7 +227,7 @@ public class SyntaxRules {
                         return "Error in Adverb Case";
                 }
             case "Preposition":
-                if (next_node_PoS.equals("Noun")) {
+                if (next_node_PoS.equals("Noun") || next_node_PoS.equals("Pronoun")) {
                     return "Prepositional_Phrase";
                 } else {
                     return "Error in Preposition Case";
@@ -198,6 +240,8 @@ public class SyntaxRules {
             case "Compound_Noun_Front":
                 switch (next_node_PoS) {
                     case "Noun":
+                        return "Compound_Noun_Front";
+                    case "Pronoun":
                         return "Compound_Noun_Front";
                     case "Compound_Noun":
                         return "Compound_Noun";
@@ -222,6 +266,8 @@ public class SyntaxRules {
                 }
             case "Verb_Phrase":
                 switch (next_node_PoS) {
+                    case "Prepositional_Phrase":
+                        return "Verb_Phrase";
                     default:
                         return "Error in Verb_Phrase Case";
                 }

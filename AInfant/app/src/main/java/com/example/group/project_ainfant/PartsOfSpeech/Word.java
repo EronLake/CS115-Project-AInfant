@@ -14,6 +14,14 @@ public class Word {
 
     //** Created by riamunoz || 11-06-2016 **//
 
+    public Word(String word, String speech) {
+        this.name = word;
+        this.definition = speech;
+    }
+
+    public Word() {
+    }
+
     public Word constructObject(String word, String PoS, Hashtable<String, Integer> Tags) {
         //Checks PoS and constructs appropriate PoS with its given tags:
         if (PoS.equals("Noun")) {
@@ -46,6 +54,7 @@ public class Word {
         }
         return null; // Returns null if PoS is not recognized
     }
+
 }
 
 /*

@@ -3,9 +3,12 @@ package com.example.group.project_ainfant;
 import android.util.Log;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
+import com.example.group.project_ainfant.PartsOfSpeech.Adverb;
+import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
 import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
+import com.example.group.project_ainfant.PartsOfSpeech.Pronoun;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
@@ -125,6 +128,10 @@ public class Test {
         Determiner test4 =  new Determiner("the",0);
         Noun test5 =  new Noun("Store",0,3,5);
 
+
+
+
+
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
         input_list.add(test);
@@ -138,14 +145,17 @@ public class Test {
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
         Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
+        Log.d(TAG, "size before isValid: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
+
+        Log.d(TAG, "size after isValid: " + syntax_checker.p.SRList.size());
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest() returned " + results);
             for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
                 Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
-            //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
             }
             return false;
         }else {
@@ -158,4 +168,274 @@ public class Test {
             return true;
         }
     }
+
+    public boolean isValidSentenceTest1() {
+
+        //create our word variables
+        Noun test =  new Noun("I",0,3,5);
+        Verb test2 =  new Verb("like",0);
+        Pronoun test5 =  new Pronoun("her",0,3,5);
+
+
+
+
+
+        //add them to our input list
+        List<Word> input_list = new ArrayList<Word>();
+        input_list.add(test);
+        input_list.add(test2);
+        input_list.add(test5);
+
+        //Log.d(TAG, input_list.get());
+        //create syntax checker object with input list inside
+        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+
+        Log.d(TAG,"before isValidSentenceTest1: " + syntax_checker.p.SRList.size());
+        //calls the isValidSentence Function
+        boolean results = syntax_checker.isValidSentence();
+        Log.d(TAG,"after isValidSentenceTest1: " + syntax_checker.p.SRList.size());
+
+
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "isValidSentenceTest1() returned " + results);
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return false;
+        }else {
+            Log.d(TAG, "isValidSentenceTest1() returned " + results);
+            //Log.d(TAG, toString(results));
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return true;
+        }
+    }
+    public boolean isValidSentenceTest2() {
+
+        //create our word variables
+        Noun test =  new Noun("I",0,3,5);
+        Verb test1 = new Verb("am",0);
+        Adverb test2 = new Adverb("very",0);
+        Adjective test3 = new Adjective("hungry",0);
+
+
+
+
+        //add them to our input list
+        List<Word> input_list = new ArrayList<Word>();
+        input_list.add(test);
+        input_list.add(test1);
+        input_list.add(test2);
+        input_list.add(test3);
+
+        //Log.d(TAG, input_list.get());
+        //create syntax checker object with input list inside
+        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+
+
+        Log.d(TAG,"before isValidSentenceTest2: " + syntax_checker.p.SRList.size());
+        //calls the isValidSentence Function
+        boolean results = syntax_checker.isValidSentence();
+        Log.d(TAG,"after isValidSentenceTest2: " + syntax_checker.p.SRList.size());
+
+
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "isValidSentenceTest2() returned " + results);
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return false;
+        }else {
+            Log.d(TAG, "isValidSentenceTest2() returned " + results);
+            //Log.d(TAG, toString(results));
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return true;
+        }
+    }
+    public boolean isValidSentenceTest3() {
+
+        //create our word variables
+        //I went to the park with my friends
+        Noun test =  new Noun("I",0,3,5);
+        Verb test2 =  new Verb("went",0);
+        Preposition test3 = new Preposition("to",0);
+        Determiner test4 = new Determiner("the",0);
+        Noun test5 = new Noun("park", 0,0,0);
+        Preposition test6 = new Preposition("with",0);
+        Determiner test7 = new Determiner("my",0);
+        Noun test8 = new Noun("friends",0,0,0);
+
+
+
+
+
+
+        //add them to our input list
+        List<Word> input_list = new ArrayList<Word>();
+        input_list.add(test);
+        input_list.add(test2);
+        input_list.add(test3);
+        input_list.add(test4);
+        input_list.add(test5);
+        input_list.add(test6);
+        input_list.add(test7);
+        input_list.add(test8);
+
+        //Log.d(TAG, input_list.get());
+        //create syntax checker object with input list inside
+        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+
+
+        Log.d(TAG,"before isValidSentenceTest3: " + syntax_checker.p.SRList.size());
+        //calls the isValidSentence Function
+        boolean results = syntax_checker.isValidSentence();
+        Log.d(TAG,"after isValidSentenceTest3: " + syntax_checker.p.SRList.size());
+
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "isValidSentenceTest3() returned " + results);
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return false;
+        }else {
+            Log.d(TAG, "isValidSentenceTest3() returned " + results);
+            //Log.d(TAG, toString(results));
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return true;
+        }
+    }
+    public boolean isValidSentenceTest4() {
+
+        //create our word variables
+        //we arrived early to the party and waited
+        Noun test =  new Noun("She",0,3,5);
+        Verb test2 =  new Verb("arrived",0);
+        Adjective test3 = new Adjective("early",0);
+        Preposition test4 = new Preposition("to",0);
+        Determiner test5 = new Determiner("the",0);
+        Noun test6 = new Noun("party",0,0,0);
+        Conjunction test7 = new Conjunction("and",0,0);
+        Verb test8 = new Verb("waited",0);
+
+
+
+
+
+        //add them to our input list
+        List<Word> input_list = new ArrayList<Word>();
+        input_list.add(test);
+        input_list.add(test2);
+        input_list.add(test3);
+        input_list.add(test4);
+        input_list.add(test5);
+        input_list.add(test6);
+        input_list.add(test7);
+        input_list.add(test8);
+
+        //Log.d(TAG, input_list.get());
+        //create syntax checker object with input list inside
+        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+
+
+        Log.d(TAG,"before isValidSentenceTest4: " + syntax_checker.p.SRList.size());
+        //calls the isValidSentence Function
+        boolean results = syntax_checker.isValidSentence();
+        Log.d(TAG,"after isValidSentenceTest4: " + syntax_checker.p.SRList.size());
+
+
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "isValidSentenceTest4() returned " + results);
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return false;
+        }else {
+            Log.d(TAG, "isValidSentenceTest4() returned " + results);
+            //Log.d(TAG, toString(results));
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return true;
+        }
+    }
+    public boolean isValidSentenceTest5() {
+
+        //create our word variables
+        //we arrived early to the party and waited
+
+        Determiner test = new Determiner("the",0);
+        Adjective test1 = new Adjective("new",0);
+        Noun test2 = new Noun("update",0,0,0);
+        Verb test3 = new Verb("will", 0);
+        Verb test4 = new Verb("be",0);
+        Verb test5 = new Verb("delayed",0);
+
+
+
+
+
+
+        //add them to our input list
+        List<Word> input_list = new ArrayList<Word>();
+        input_list.add(test);
+        input_list.add(test1);
+        input_list.add(test2);
+        input_list.add(test3);
+        input_list.add(test4);
+        input_list.add(test5);
+
+
+        //Log.d(TAG, input_list.get());
+        //create syntax checker object with input list inside
+        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+
+
+        Log.d(TAG,"before isValidSentenceTest5: " + syntax_checker.p.SRList.size());
+        //calls the isValidSentence Function
+        boolean results = syntax_checker.isValidSentence();
+        Log.d(TAG,"after isValidSentenceTest5: " + syntax_checker.p.SRList.size());
+
+
+        //checks output for desired results
+        if (results == false){
+            Log.d(TAG, "isValidSentenceTest4() returned " + results);
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return false;
+        }else {
+            Log.d(TAG, "isValidSentenceTest4() returned " + results);
+            //Log.d(TAG, toString(results));
+            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+                //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+            }
+            return true;
+        }
+    }
+
 }
+
