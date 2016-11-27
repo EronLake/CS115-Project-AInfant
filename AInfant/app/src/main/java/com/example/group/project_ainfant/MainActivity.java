@@ -53,6 +53,7 @@ public class MainActivity extends ActionBarActivity {
         buttonViewAll = (Button)findViewById(R.id.view_all);
         addData();
         viewAll();
+        userInput();
 
 
     }
@@ -61,18 +62,32 @@ public class MainActivity extends ActionBarActivity {
     // function that will allow user to talk to AI
     // need to change so the input goes to parser instead of just echoing
 
-    /*public void userInput() {
+    public void userInput() {
         buttonUserInput.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        input = (EditText)findViewById(inputText);
+                        String sentence = input.getText().toString();
+                        String [] tok = sentence.split("\\s+");
                         output = (TextView)findViewById(R.id.outputText);
-                        output.setText(input.getText());
+                        String [] structure = new String[tok.length];
+
+                        for(int i=0;i<structure.length;i++){
+                            structure[i] = myDb.findSpeech(tok[i]);
+
+                        }
+
+                        String structureString = "";
+                        for(int i=0;i<structure.length;i++) {
+                            structureString = structureString + " " + (structure[i]);
+                        }
+                        output.setText("test2: " + structureString);
+
+
                     }
                 }
         );
-    }*/
+    }
 
 
     // checks if input already exists before adding into the database
@@ -82,19 +97,30 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
-                            boolean isInserted = myDb.insertData(input.getText().toString());
+                            //boolean isInserted = myDb.insertData(input.getText().toString());
+
                             String sentence = input.getText().toString();
-                            // Initialize Intent object for new activity
+                            String [] tok = sentence.split("\\s+");
+
+                            /*
+                            for(int i=0;i<tok.length;i++){
+                                if(myDb.ifExists(tok[i])==false) {
+                                    myDb.insertData(tok[i]);
+                                }
+                            }
+                            */
 
                             DropDownMenu.sentence = sentence;
 
-                            String [] tok = sentence.split("\\s+");
+
                             List<Word> structure = new ArrayList<Word>();
 
 
                             Intent drop_menu = new Intent(v.getContext(), DropDownMenu.class);
                             startActivityForResult(drop_menu, 0);
                             DropDownMenu.counter = 0;
+
+
 
                         } else {
                             showMessage("Error", "Already in database");
@@ -171,20 +197,7 @@ public class MainActivity extends ActionBarActivity {
         validateInput(tokenize(input.getText().toString().trim()));
     }*/
 
-    public boolean validateInput(String[] tokens){
 
-        for(String s: tokens){
-
-            if(!myDb.ifExists(s)){
-                Log.d("myTag", "String not recognized"); //test to see if string is not known
-                return false;
-
-            }
-
-        }
-
-        return true;
-    }
 
 
 

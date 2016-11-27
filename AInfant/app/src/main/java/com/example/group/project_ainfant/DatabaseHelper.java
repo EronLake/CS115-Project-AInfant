@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.group.project_ainfant.PartsOfSpeech.*;
+import android.util.Log;
 /**
  * Created by MichaelHa1 on 10/17/16.
  * Expanded by Gamiel Sanchez
@@ -114,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", adjective.name);
-        values.put("TYPE", adjective.definition);
+        values.put("TYPE", "adjective");
         db.insert("words", null, values);
         db.close(); // Closing database connection
 
@@ -132,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", adverb.name);
-        values.put("TYPE", adverb.definition);
+        values.put("TYPE", "adverb");
         db.insert("words", null, values);
         db.close(); // Closing database connection
 
@@ -149,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", determiner.name);
-        values.put("TYPE", determiner.definition);
+        values.put("TYPE", "determiner");
         db.insert("words", null, values);
         db.close(); // Closing database connection
     }
@@ -165,7 +166,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", interjection.name);
-        values.put("TYPE", interjection.definition);
+        values.put("TYPE", "interjection");
         db.insert("words", null, values);
         db.close(); // Closing database connection
     }
@@ -182,7 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", noun.name);
-        values.put("TYPE", noun.definition);
+        values.put("TYPE", "noun");
         db.insert("words", null, values);
         db.close(); // Closing database connection
 
@@ -202,7 +203,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", pronoun.name);
-        values.put("TYPE", pronoun.definition);
+        values.put("TYPE", "pronoun");
         db.insert("words", null, values);
         db.close(); // Closing database connection
 
@@ -219,13 +220,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //put it in the words table as well
         values.clear();
         values.put("WORD", verb.name);
-        values.put("TYPE", verb.definition);
+        values.put("TYPE", "verb");
         db.insert("words", null, values);
 
         db.close(); // Closing database connection
     }
 
-
+    /*
     public boolean insertData(String input){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -238,9 +239,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    */
 
     public boolean ifExists(String exists) {
-        String query = "Select * FROM words WHERE TYPE" + " =  \"" + exists + "\"";
+        String query = "Select * FROM input_table WHERE input" + " =  \"" + exists + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0){
@@ -249,6 +251,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return true;
+    }
+
+    public String findSpeech(String productname) {
+        String query = "Select * FROM " + "words" + " WHERE " + "word" + " =  \"" + productname + "\"";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        String word = null;
+
+        while (cursor.moveToNext()) {
+            word = cursor.getString(2);
+        }
+
+        db.close();
+        return word;
     }
 
 
