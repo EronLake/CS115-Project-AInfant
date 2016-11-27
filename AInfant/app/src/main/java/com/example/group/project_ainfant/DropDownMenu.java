@@ -64,6 +64,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         output = (TextView) findViewById(R.id.outputText);
         output.setText(word);
 
+
         // Initial drop down menu items, stored as a String array
         parts_of_speech = new ArrayList<>();
         parts_of_speech.add("Adjective");
@@ -108,6 +109,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adverb name", adv.name);
                             Log.d("adverb type", Integer.toString(adv.posNegNeu));
                             myDb.addAdverb(adv);
+
+
 
                             if(counter == (tok.length-1) ) {
                                 finish();
@@ -182,7 +185,13 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 prep.type = 2;
                             }
                             //myDb.addPrepostion(prep);
-                            finish();
+                            if(counter == (tok.length-1) ) {
+                                finish();
+                            }else{
+                                counter++;
+                                word = tok[counter];
+                                output.setText(word);
+                            }
                         } else if (pos.equals("Verb")) {
                             Verb verb = new Verb(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -192,6 +201,13 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 verb.actVPass = 1;
                             }
                             myDb.addVerb(verb);
+                            if(counter == (tok.length-1) ) {
+                                finish();
+                            }else{
+                                counter++;
+                                word = tok[counter];
+                                output.setText(word);
+                            }
                         }
                     }
                 }
