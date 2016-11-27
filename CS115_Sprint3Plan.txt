@@ -1,0 +1,93 @@
+﻿Sprint Plan 3 
+AInfant
+Nov 23, 2016
+
+
+
+
+Goal: Have unknown words inputted to the database with its respective attributes and placed into a grammar tree which will return if it is a valid sentence or not. 
+
+
+Task listing, organized by user story: This section lists the user stories, in priority order from most important (top) to least important (bottom). Within each user story, there needs to be a list of tasks required to implement the user story, along with the time estimate for each tasks (preferably less than or equal to 6 ideal hours). This should look like: 
+
+
+
+
+1. As an app user, I need to have a second screen appear on the UI where I can “teach” the AI a word (construct a word) with its given attributes so I can add it to the database with all of its attributes/connotations. 
+	2.  As a developer, I need to build a parser that will construct a grammar tree out of the tokens inputted.
+	3. As a developer, the AI needs to read a sentence and
+AI needs to identify each type of word 
+so the AI can detect if a correct sentence was entered. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+User Stories
+	Hours
+	As an app user, I need to have a second screen appear on the UI where I can “teach” the AI a word (construct a word) with its given attributes so I can add it to the database with all of its attributes/connotations. 
+	
+
+	1. Setup spinners in drop down menu where the user can select the given words/types and save their selections DL, GS, MH, RM
+	3hr
+	2. Read selected spinner values and pass into the respective word constructor (pass in correct strings to construct the word) DL, GS, MH, RM
+	2hr
+	3. Add an onClicklistener/button that will add the word into the database
+ DL, GS, MH, RM
+	1hr
+	As a developer, I need to build a parser that will construct a grammar tree out of the tokens inputted so we can identify the structure of each sentence.           
+	
+
+	1. implement grammar rules that will be used  in order to parse the sentence (based off of previous brainstorm) RJ, EL
+
+
+	4hrs
+	2. Create parsetree class that will be used for parsing the user’s input sentence RJ, EL
+	2hr
+	3. Create the parsing helper class that will run the parsing function on the input sentences and build the parse tree RJ, EL
+	3hrs
+	As a user of the app, I want to be able to know if the sentence I entered is correct so that the AI will be able to communicate if it does not understand. 
+	
+
+	1. Implement a sentence tokenizer that will split the sentence into single words. ALL
+	30min
+	2. Implement ability to specify the Part of Speech of each word in a sentence.
+ALL
+	1hr
+	3. Implement a query which will look for each word in the database to see if it exists. If it does, return its respective attributes. ALL
+	2hr

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Robert on 11/6/2016.
  */
 //checks the grammar of the sentence and creates a parse tree for that sentence
-    //testing
+//testing
 public class SyntaxCheck {
 
     ParseTree p;

@@ -1,27 +1,29 @@
 package com.example.group.project_ainfant;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
+
+import android.widget.Spinner;
+
 import android.widget.TextView;
 import android.util.Log;
 
 
+
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
 import com.example.group.project_ainfant.PartsOfSpeech.Adverb;
+import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
 import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Interjection;
-import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
-import com.example.group.project_ainfant.PartsOfSpeech.Pronoun;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
@@ -38,6 +40,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
     public static int counter= 0;
 
     String word = tok[counter];
+
 
 
     private Spinner spinner, spinner2, spinner3, spinner4;
@@ -110,6 +113,13 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adverb type", Integer.toString(adv.posNegNeu));
                             myDb.addAdverb(adv);
 
+<<<<<<< HEAD
+=======
+                            finish();
+                            // Refresh activity here if there are more unknown words:
+                            // if (!endOfArrayList) do
+                            startActivity(getIntent());
+>>>>>>> a28383bb200ba8c3ae01d57fd9d723e483bda67a
 
 
                             if(counter == (tok.length-1) ) {
@@ -119,6 +129,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
+
 
 
                         } else if (pos.equals("Adjective")) {
@@ -228,8 +239,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         //Chooses which constructor to use
         if ( PoS.contentEquals("Adjective") ) {
             ArrayList<String> options = new ArrayList<>();
-
-            Adjective adj = new Adjective(PoS, -1); // Set initial value to null
             options.add("Positive");
             options.add("Negative");
             options.add("Neutral");
@@ -242,10 +251,10 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
 
 
+
+
         } else if (PoS.contentEquals("Adverb")) {
             ArrayList<String> options = new ArrayList<>();
-
-
             options.add("Positive");
             options.add("Negative");
             options.add("Neutral");
@@ -254,11 +263,17 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
             spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);
 
 
+
+
+        } else if (PoS.contentEquals("Conjunction")) {
+
           } else if (PoS.contentEquals("Conjunction")) {
+
             ArrayList<String> options = new ArrayList<>();
 
             Conjunction conj = new Conjunction(PoS, -1, -1);
@@ -269,6 +284,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+
+
 
 
 
@@ -284,10 +301,10 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
 
 
+
+
         } else if (PoS.contentEquals("Determiner")) {
             ArrayList<String> options = new ArrayList<>();
-
-
             options.add("Plural");
             options.add("Singular");
 
@@ -299,8 +316,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
         } else if (PoS.contentEquals("Interjection")) {
             ArrayList<String> options = new ArrayList<>();
-
-
 
             options.add("Greeting");
             options.add("Exclamation");
@@ -314,8 +329,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         }else if (PoS.contentEquals("Noun")) {
             ArrayList<String> options = new ArrayList<>();
 
-            Noun noun = new Noun(PoS, -1, -1, -1);
-
             options.add("Thing");
             options.add("Person");
             options.add("Place");
@@ -324,6 +337,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+
+
+
 
             ArrayList<String> options2 = new ArrayList<>();
 
@@ -334,6 +350,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter2.notifyDataSetChanged();
             spinner3.setAdapter(dataAdapter2);
+
+
 
 
             ArrayList<String> options3 = new ArrayList<>();
