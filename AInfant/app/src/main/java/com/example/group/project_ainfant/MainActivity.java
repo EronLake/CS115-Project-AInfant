@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
                         for(int i=0;i<structure.length;i++) {
                             structureString = structureString + " " + (structure[i]);
                         }
-                        output.setText("test2: " + structureString);
+                        //output.setText("test2: " + structureString);
 
                         //code that creates word list
                         //

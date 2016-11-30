@@ -29,6 +29,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
     public static String sentence = "";
     String [] tok = sentence.split("\\s+");
     public static int counter= 0;
+    public static String alreadyIn = "";
+
 
     String word = tok[counter];
 
@@ -97,10 +99,12 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             }
                             Log.d("adverb name", adv.name);
                             Log.d("adverb type", Integer.toString(adv.posNegNeu));
-                            myDb.addAdverb(adv);
+
                             if(counter == (tok.length-1) ) {
+                                myDb.addAdverb(adv);
                                 finish();
                             }else{
+
                                 counter++;
                                 word = tok[counter];
                                 output.setText(word);
