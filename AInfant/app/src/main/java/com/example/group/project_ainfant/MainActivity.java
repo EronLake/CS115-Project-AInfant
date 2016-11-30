@@ -69,43 +69,69 @@ public class MainActivity extends ActionBarActivity {
                             Toast.makeText(getApplicationContext(), "Please put something in the textbox", Toast.LENGTH_LONG).show();
 
                         }else{
+                            boolean check = false;
+                            ArrayList<String> wordsNotAdded = new ArrayList<String>();
 
                             String[] tok = sentence.split("\\s+");
                             output = (TextView) findViewById(R.id.outputText);
                             String[] structure = new String[tok.length];
 
                             for (int i = 0; i < structure.length; i++) {
-                                structure[i] = myDb.findSpeech(tok[i]);
+                                if(myDb.ifExists(tok[i])){
+                                    structure[i] = myDb.findSpeech(tok[i]);
+                                }else{
+                                    wordsNotAdded.add(tok[i]);
+                                    check = true;
+                                }
                             }
+                            if(check == true){
+                                String wordNotAdded = "";
+                                if(wordsNotAdded.size() == 1){
+                                    wordNotAdded = wordNotAdded + wordsNotAdded.get(0);
+                                }else{
+                                    wordNotAdded = wordNotAdded + wordsNotAdded.get(0);
+                                    for (int i = 1; i < wordsNotAdded.size(); i++) {
+                                        wordNotAdded = wordNotAdded + "," + wordsNotAdded.get(i);
+                                    }
+                                }
+                                if(wordsNotAdded.size() == 1){
+                                    wordNotAdded = wordNotAdded + " has not been added to the database";
+                                }else{
+                                    wordNotAdded = wordNotAdded + " have not been added to the database";
+                                }
 
-                            String structureString = "";
-                            for (int i = 0; i < structure.length; i++) {
-                                structureString = structureString + " " + (structure[i]);
-                            }
-                            //output.setText("test2: " + structureString);
+                                Toast.makeText(getApplicationContext(), wordNotAdded, Toast.LENGTH_LONG).show();
 
-                            //code that creates word list
-                            //
-                            //create empty list of words
-                            List<Word> input_list = new ArrayList<Word>();
-                            Word word_constructor = new Word();
+                            }else {
 
-                            //input the words with the corresponding type
-                            for (int i = 0; i < tok.length; i++) {
-                                input_list.add(word_constructor.constructObjectNoTags(tok[i], structure[i]));
-                                Log.d("structure(i)", structure[i]);
-                            }
-                            Log.d("length", Integer.toString(input_list.size()));
+                                String structureString = "";
+                                for (int i = 0; i < structure.length; i++) {
+                                    structureString = structureString + " " + (structure[i]);
+                                }
+                                //output.setText("test2: " + structureString);
 
-                            // calls syntax check
-                            SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-                            boolean results = syntax_checker.isValidSentence();
-                            Log.d("result", Boolean.toString(results));
-                            if (results) {
-                                Toast.makeText(getApplicationContext(), "This is a valid sentence.", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "This is a invalid sentence.", Toast.LENGTH_LONG).show();
+                                //code that creates word list
+                                //create empty list of words
+                                List<Word> input_list = new ArrayList<Word>();
+                                Word word_constructor = new Word();
 
+                                //input the words with the corresponding type
+                                for (int i = 0; i < tok.length; i++) {
+                                    input_list.add(word_constructor.constructObjectNoTags(tok[i], structure[i]));
+                                    Log.d("structure(i)", structure[i]);
+                                }
+                                Log.d("length", Integer.toString(input_list.size()));
+
+                                // calls syntax check
+                                SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+                                boolean results = syntax_checker.isValidSentence();
+                                Log.d("result", Boolean.toString(results));
+                                if (results) {
+                                    Toast.makeText(getApplicationContext(), "This is a valid sentence.", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "This is a invalid sentence.", Toast.LENGTH_LONG).show();
+
+                                }
                             }
                         }
                     }
