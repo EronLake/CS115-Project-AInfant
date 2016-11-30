@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
 import com.example.group.project_ainfant.PartsOfSpeech.Adverb;
@@ -105,6 +106,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 finish();
                             }else{
 
+                                myDb.addAdverb(adv);
                                 counter++;
                                 word = tok[counter];
                                 output.setText(word);
