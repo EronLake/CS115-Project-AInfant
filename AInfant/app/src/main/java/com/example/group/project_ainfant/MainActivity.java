@@ -98,7 +98,6 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(View v) {
                         if(!myDb.ifExists(input.getText().toString())) {
                             //boolean isInserted = myDb.insertData(input.getText().toString());
-
                             String sentence = input.getText().toString();
                             String [] tok = sentence.split("\\s+");
 
@@ -109,13 +108,8 @@ public class MainActivity extends ActionBarActivity {
                                 }
                             }
                             */
-
                             DropDownMenu.sentence = sentence;
-
-
                             List<Word> structure = new ArrayList<Word>();
-
-
                             Intent drop_menu = new Intent(v.getContext(), DropDownMenu.class);
                             startActivityForResult(drop_menu, 0);
                             DropDownMenu.counter = 0;
