@@ -64,43 +64,49 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onClick(View v) {
                         String sentence = input.getText().toString();
-                        String [] tok = sentence.split("\\s+");
-                        output = (TextView)findViewById(R.id.outputText);
-                        String [] structure = new String[tok.length];
 
-                        for(int i=0;i<structure.length;i++){
-                            structure[i] = myDb.findSpeech(tok[i]);
+                        if(sentence.equals("")){
+                            Toast.makeText(getApplicationContext(), "Please put something in the textbox", Toast.LENGTH_LONG).show();
 
-                        }
+                        }else{
 
-                        String structureString = "";
-                        for(int i=0;i<structure.length;i++) {
-                            structureString = structureString + " " + (structure[i]);
-                        }
-                        //output.setText("test2: " + structureString);
+                            String[] tok = sentence.split("\\s+");
+                            output = (TextView) findViewById(R.id.outputText);
+                            String[] structure = new String[tok.length];
 
-                        //code that creates word list
-                        //
-                        //create empty list of words
-                        List<Word> input_list = new ArrayList<Word>();
-                        Word word_constructor = new Word();
+                            for (int i = 0; i < structure.length; i++) {
+                                structure[i] = myDb.findSpeech(tok[i]);
+                            }
 
-                        //input the words with the corresponding type
-                        for(int i=0;i<tok.length;i++){
-                            input_list.add(word_constructor.constructObjectNoTags(tok[i], structure[i]));
-                            Log.d("structure(i)", structure[i] );
-                        }
-                        Log.d("length",Integer.toString(input_list.size()) );
+                            String structureString = "";
+                            for (int i = 0; i < structure.length; i++) {
+                                structureString = structureString + " " + (structure[i]);
+                            }
+                            //output.setText("test2: " + structureString);
 
-                        // calls syntax check
-                        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-                        boolean results = syntax_checker.isValidSentence();
-                        Log.d("result",Boolean.toString(results));
-                        if( results) {
-                            Toast.makeText(getApplicationContext(), "This is a valid sentence.", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "This is a invalid sentence.", Toast.LENGTH_LONG).show();
+                            //code that creates word list
+                            //
+                            //create empty list of words
+                            List<Word> input_list = new ArrayList<Word>();
+                            Word word_constructor = new Word();
 
+                            //input the words with the corresponding type
+                            for (int i = 0; i < tok.length; i++) {
+                                input_list.add(word_constructor.constructObjectNoTags(tok[i], structure[i]));
+                                Log.d("structure(i)", structure[i]);
+                            }
+                            Log.d("length", Integer.toString(input_list.size()));
+
+                            // calls syntax check
+                            SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+                            boolean results = syntax_checker.isValidSentence();
+                            Log.d("result", Boolean.toString(results));
+                            if (results) {
+                                Toast.makeText(getApplicationContext(), "This is a valid sentence.", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "This is a invalid sentence.", Toast.LENGTH_LONG).show();
+
+                            }
                         }
                     }
                 }
