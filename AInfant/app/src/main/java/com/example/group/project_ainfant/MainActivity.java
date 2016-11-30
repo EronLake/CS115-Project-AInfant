@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
     DatabaseHelper myDb;
     EditText input;
     TextView output;
-    Button buttonAddData, buttonViewAll, buttonUserInput;
+    Button buttonAddData, buttonUserInput;
 
 
     /** called when activity is first created */
@@ -46,9 +46,7 @@ public class MainActivity extends ActionBarActivity {
         input = (EditText)findViewById(input_text);
         buttonUserInput = (Button)findViewById(R.id.button_enter);
         buttonAddData = (Button)findViewById(R.id.button_add);
-        buttonViewAll = (Button)findViewById(R.id.view_all);
         addData();
-        viewAll();
         userInput();
 
 
@@ -176,30 +174,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void viewAll() {
-        buttonViewAll.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Cursor res = myDb.getAllData();
-                    if(res.getCount() == 0) {
-                        // show message
-                        showMessage("Error","Nothing found");
-                        return;
-                    }
 
-                    StringBuffer buffer = new StringBuffer();
-                    while (res.moveToNext()) {
-                        buffer.append("Id :"+ res.getString(0)+"\n");
-                        buffer.append("Input :"+ res.getString(1)+"\n");
-                    }
-
-                    // Show all data
-                    showMessage("Data",buffer.toString());
-                }
-            }
-        );
-    }
 
     public void showMessage(String title,String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
