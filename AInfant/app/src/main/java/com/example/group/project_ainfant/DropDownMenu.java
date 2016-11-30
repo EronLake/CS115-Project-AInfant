@@ -62,6 +62,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         parts_of_speech.add("Determiner");
         parts_of_speech.add("Interjection");
         parts_of_speech.add("Noun");
+        parts_of_speech.add("Preposition");
         parts_of_speech.add("Pronoun");
         parts_of_speech.add("Verb");
 
