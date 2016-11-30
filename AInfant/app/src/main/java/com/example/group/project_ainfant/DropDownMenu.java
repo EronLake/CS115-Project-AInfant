@@ -23,6 +23,7 @@ import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
 import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Interjection;
+import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
@@ -113,13 +114,10 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adverb type", Integer.toString(adv.posNegNeu));
                             myDb.addAdverb(adv);
 
-<<<<<<< HEAD
-=======
                             finish();
                             // Refresh activity here if there are more unknown words:
                             // if (!endOfArrayList) do
                             startActivity(getIntent());
->>>>>>> a28383bb200ba8c3ae01d57fd9d723e483bda67a
 
 
                             if(counter == (tok.length-1) ) {
@@ -173,6 +171,8 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 finish();
                             }else{
                                 counter++;
+                                word = tok[counter];
+                                output.setText(word);
                             }
 
                         } else if (pos.equals("Interjection")) {
@@ -184,7 +184,32 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 inject.type = 1;
                             }
                             myDb.addInterjection(inject);
-                            finish();
+
+                            if(counter == (tok.length-1) ) {
+                                finish();
+                            }else{
+                                counter++;
+                                word = tok[counter];
+                                output.setText(word);
+                            }
+                        } else if (pos.equals("Noun")) {
+                            Noun noun = new Noun(word, -1,-1,-1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Location")) {
+                                noun.type = 0;
+                            } else if (tag.equals("Time")) {
+                                noun.type = 1;
+                            } else if (tag.equals("Other")) {
+                                noun.type = 2;
+                            }
+                            myDb.addNoun(noun);
+                            if(counter == (tok.length-1) ) {
+                                finish();
+                            }else{
+                                counter++;
+                                word = tok[counter];
+                                output.setText(word);
+                            }
                         } else if (pos.equals("Preposition")) {
                             Preposition prep = new Preposition(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
