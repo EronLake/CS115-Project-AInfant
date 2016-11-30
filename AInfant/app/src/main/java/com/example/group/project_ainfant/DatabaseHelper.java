@@ -255,13 +255,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String findSpeech(String productname) {
         String query = "Select * FROM " + "words" + " WHERE " + "word" + " =  \"" + productname + "\"";
-
         SQLiteDatabase db = this.getWritableDatabase();
-
         Cursor cursor = db.rawQuery(query, null);
-
         String word = null;
-
         while (cursor.moveToNext()) {
             word = cursor.getString(2);
         }
