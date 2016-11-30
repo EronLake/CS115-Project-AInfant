@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.group.project_ainfant.PartsOfSpeech.*;
+import android.widget.Toast;
 import android.util.Log;
 /**
  * Created by MichaelHa1 on 10/17/16.
@@ -34,9 +35,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         initializePreposition(db);
         initializePronoun(db);
         initializeVerb(db);
-        db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "INPUT text,"
-                + "speech text)");
 
     }
 
@@ -71,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void initializeConjunction(SQLiteDatabase db){
-        db.execSQL("create table conjuctions " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+        db.execSQL("create table conjunctions " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "WORD text, TYPE text, ANDBUT text)"
         );
     }
@@ -157,7 +155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("TYPE", conjunction.cordVSub); // Adjective Type
         values.put("ANDBUT", conjunction.andVBut);
         // Inserting Row
-        db.insert("adverbs", null, values);
+        db.insert("conjunctions", null, values);
         //put it in the words table as well
         values.clear();
         values.put("WORD", conjunction.name);
@@ -269,20 +267,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    /*
-    public boolean insertData(String input){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        //putting the user input into the INPUT column
-        contentValues.put("INPUT", input);
-        long result = db.insert(TABLE_NAME,null,contentValues);
-        if(result == -1){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    */
+
 
     public boolean ifExists(String exists) {
         String query = "Select * FROM words WHERE word" + " =  \"" + exists + "\"";
