@@ -128,10 +128,6 @@ public class Test {
         Determiner test4 =  new Determiner("the",0);
         Noun test5 =  new Noun("Store",0,3,5);
 
-
-
-
-
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
         input_list.add(test);
@@ -176,10 +172,6 @@ public class Test {
         Verb test2 =  new Verb("like",0);
         Pronoun test5 =  new Pronoun("her",0,3,5);
 
-
-
-
-
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
         input_list.add(test);
@@ -222,9 +214,6 @@ public class Test {
         Verb test1 = new Verb("am",0);
         Adverb test2 = new Adverb("very",0);
         Adjective test3 = new Adjective("hungry",0);
-
-
-
 
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
@@ -275,11 +264,6 @@ public class Test {
         Preposition test6 = new Preposition("with",0);
         Determiner test7 = new Determiner("my",0);
         Noun test8 = new Noun("friends",0,0,0);
-
-
-
-
-
 
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
@@ -334,10 +318,6 @@ public class Test {
         Conjunction test7 = new Conjunction("and",0,0);
         Verb test8 = new Verb("waited",0);
 
-
-
-
-
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
         input_list.add(test);
@@ -391,11 +371,6 @@ public class Test {
         Verb test4 = new Verb("be",0);
         Verb test5 = new Verb("delayed",0);
 
-
-
-
-
-
         //add them to our input list
         List<Word> input_list = new ArrayList<Word>();
         input_list.add(test);
@@ -404,7 +379,6 @@ public class Test {
         input_list.add(test3);
         input_list.add(test4);
         input_list.add(test5);
-
 
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside

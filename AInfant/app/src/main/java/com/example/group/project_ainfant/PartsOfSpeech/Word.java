@@ -22,6 +22,7 @@ public class Word {
     public Word() {
     }
 
+
     public Word constructObject(String word, String PoS, Hashtable<String, Integer> Tags) {
         //Checks PoS and constructs appropriate PoS with its given tags:
         if (PoS.equals("Noun")) {
@@ -55,6 +56,38 @@ public class Word {
         return null; // Returns null if PoS is not recognized
     }
 
+    public Word constructObjectNoTags(String word, String PoS) {
+        //Checks PoS and constructs appropriate PoS with its given tags:
+        if (PoS.equals("Noun")) {
+            Noun new_Word = new Noun(word, 0, 3, 5);
+            return new_Word;
+        } else if (PoS.equals("Verb")) {
+            Verb new_Word = new Verb(word, 0);
+            return new_Word;
+        } else if (PoS.equals("Adjective")){
+            Adjective new_Word = new Adjective(word, 0);
+            return new_Word;
+        } else if (PoS.equals("Adverb")){
+            Adverb new_Word = new Adverb(word,0);
+            return new_Word;
+        } else if (PoS.equals("Pronoun")){
+            Pronoun new_Word = new Pronoun(word, 0, 2, 5);
+            return new_Word;
+        } else if (PoS.equals("Determiner")){
+            Determiner new_Word = new Determiner(word, 0);
+            return new_Word;
+        } else if (PoS.equals("Interjection")){
+            Interjection new_Word = new Interjection(word, 0);
+            return new_Word;
+        }  else if (PoS.equals("Conjunction")){
+            Conjunction new_Word = new Conjunction (word, 0, 2);
+            return new_Word;
+        }  else if (PoS.equals("Preposition")){
+            Preposition new_Word = new Preposition(word, 0);
+            return new_Word;
+        }
+        return null; // Returns null if PoS is not recognized
+    }
 }
 
 /*
