@@ -58,31 +58,31 @@ public class Word {
 
     public Word constructObjectNoTags(String word, String PoS) {
         //Checks PoS and constructs appropriate PoS with its given tags:
-        if (PoS.equals("Noun")) {
+        if (PoS.equals("noun")) {
             Noun new_Word = new Noun(word, 0, 3, 5);
             return new_Word;
-        } else if (PoS.equals("Verb")) {
+        } else if (PoS.equals("verb")) {
             Verb new_Word = new Verb(word, 0);
             return new_Word;
-        } else if (PoS.equals("Adjective")){
+        } else if (PoS.equals("adjective")){
             Adjective new_Word = new Adjective(word, 0);
             return new_Word;
-        } else if (PoS.equals("Adverb")){
+        } else if (PoS.equals("adverb")){
             Adverb new_Word = new Adverb(word,0);
             return new_Word;
-        } else if (PoS.equals("Pronoun")){
+        } else if (PoS.equals("pronoun")){
             Pronoun new_Word = new Pronoun(word, 0, 2, 5);
             return new_Word;
-        } else if (PoS.equals("Determiner")){
+        } else if (PoS.equals("determiner")){
             Determiner new_Word = new Determiner(word, 0);
             return new_Word;
-        } else if (PoS.equals("Interjection")){
+        } else if (PoS.equals("interjection")){
             Interjection new_Word = new Interjection(word, 0);
             return new_Word;
-        }  else if (PoS.equals("Conjunction")){
+        }  else if (PoS.equals("conjunction")){
             Conjunction new_Word = new Conjunction (word, 0, 2);
             return new_Word;
-        }  else if (PoS.equals("Preposition")){
+        }  else if (PoS.equals("preposition")){
             Preposition new_Word = new Preposition(word, 0);
             return new_Word;
         }

@@ -269,7 +269,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     */
 
     public boolean ifExists(String exists) {
-        String query = "Select * FROM words WHERE input" + " =  \"" + exists + "\"";
+        String query = "Select * FROM words WHERE word" + " =  \"" + exists + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0){

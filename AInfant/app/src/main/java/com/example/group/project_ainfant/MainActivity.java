@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.util.Log;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
@@ -86,12 +87,14 @@ public class MainActivity extends ActionBarActivity {
                         //input the words with the corresponding type
                         for(int i=0;i<tok.length;i++){
                             input_list.add(word_constructor.constructObjectNoTags(tok[i], structure[i]));
+                            Log.d("structure(i)", structure[i] );
                         }
+                        Log.d("length",Integer.toString(input_list.size()) );
 
                         // calls syntax check
                         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
                         boolean results = syntax_checker.isValidSentence();
-
+                        Log.d("result",Boolean.toString(results));
                     }
                 }
         );

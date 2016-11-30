@@ -94,14 +94,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adverb name", adv.name);
                             Log.d("adverb type", Integer.toString(adv.posNegNeu));
                             myDb.addAdverb(adv);
-                            //finish();
-                            // Refresh activity here if there are more unknown words:
-                            // if (!endOfArrayList) do
-
-                            startActivity(getIntent());
-
-                            //startActivity(getIntent());
-
                             if(counter == (tok.length-1) ) {
                                 finish();
                             }else{
@@ -122,8 +114,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adj name", adj.name);
                             Log.d("adj type", Integer.toString(adj.posNegNeu));
                             myDb.addAdjective(adj);
-                            //finish();
-
 
                             if(counter == (tok.length-1) ) {
                                 finish();
@@ -144,8 +134,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adj name", det.name);
                             Log.d("adj type", Integer.toString(det.singVPlur));
                             myDb.addDeterminer(det);
-                            //finish();
-
                             if(counter == (tok.length-1) ) {
                                 finish();
                             }else{
