@@ -27,9 +27,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         initializeWords(db);
         initializeAdjective(db);
         initializeAdverb(db);
+        initializeConjunction(db);
         initializeDeterminer(db);
         initializeInterjection(db);
         initializeNoun(db);
+        initializePreposition(db);
         initializePronoun(db);
         initializeVerb(db);
         db.execSQL("create table input_table " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -68,6 +70,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
     }
 
+    public void initializeConjunction(SQLiteDatabase db){
+        db.execSQL("create table conjuctions " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text)"
+        );
+    }
+
     public void initializeDeterminer(SQLiteDatabase db){
         db.execSQL("create table determiners " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "WORD text, TYPE text)"
@@ -83,6 +91,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void initializeNoun(SQLiteDatabase db){
         db.execSQL("create table nouns " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "WORD text, TYPE text, PROPER text)"
+        );
+    }
+
+    public void initializePreposition(SQLiteDatabase db){
+        db.execSQL("create table prepositions " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "WORD text, TYPE text, GENDER text, VALUE text)"
         );
     }
 
@@ -105,7 +119,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Insert Functions
     public void addAdjective(Adjective adjective){
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put("WORD", adjective.name); // The word
         values.put("TYPE", adjective.posNegNeu); // Adjective Type
@@ -123,17 +136,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void addAdverb(Adverb adverb){
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put("WORD", adverb.name); // The word
         values.put("TYPE", adverb.posNegNeu); // Adjective Type
-
         // Inserting Row
         db.insert("adverbs", null, values);
         //put it in the words table as well
         values.clear();
         values.put("WORD", adverb.name);
         values.put("TYPE", "adverb");
+        db.insert("words", null, values);
+        db.close(); // Closing database connection
+
+    }
+
+    public void addConjunction(Conjunction conjunction){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("WORD", conjunction.name); // The word
+        values.put("TYPE", conjunction.cordVSub); // Adjective Type
+        // Inserting Row
+        db.insert("adverbs", null, values);
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", conjunction.name);
+        values.put("TYPE", "conjunction");
         db.insert("words", null, values);
         db.close(); // Closing database connection
 
@@ -242,7 +269,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     */
 
     public boolean ifExists(String exists) {
-        String query = "Select * FROM input_table WHERE input" + " =  \"" + exists + "\"";
+        String query = "Select * FROM words WHERE word" + " =  \"" + exists + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0){
