@@ -44,7 +44,7 @@
         android:id="@+id/spin4"/>
 
     <Button
-        android:text="Add to Database"
+        android:text="Teach Word"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_add2" />

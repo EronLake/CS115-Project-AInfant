@@ -64,7 +64,7 @@ public class Test {
             return false;
         }else {
             Log.d(TAG, "constructObjectTest() returned true");
-            Log.d(TAG, new_Word.name);
+            //Log.d(TAG, new_Word.name);
             return true;
         }
     }
@@ -100,8 +100,8 @@ public class Test {
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "checkRulesTest() returned false");
-            Log.d(TAG, "cur_node: " + cur_node.getPartOfSpeech() + ", " +
-                    "next_node: " + next_node.getPartOfSpeech());
+            //Log.d(TAG, "cur_node: " + cur_node.getPartOfSpeech() + ", " +
+            //        "next_node: " + next_node.getPartOfSpeech());
             return false;
         }else {
             Log.d(TAG, "checkRulesTest() returned true");
@@ -125,12 +125,12 @@ public class Test {
         String results = rules.getShiftReduceName(cur_node,next_node);
         //checks output for desired results
         if (results == "Compound_Noun_Front"){
-            Log.d(TAG, "getShiftReduceNameTest() returned " + results);
-            Log.d(TAG, "cur_node: " + cur_node.getPartOfSpeech() + ", " +
-                    "next_node: " + next_node.getPartOfSpeech());
+            Log.d(TAG, "getShiftReduceNameTest() returned false");
+            //Log.d(TAG, "cur_node: " + cur_node.getPartOfSpeech() + ", " +
+            //        "next_node: " + next_node.getPartOfSpeech());
             return false;
         }else {
-            Log.d(TAG, "getShiftReduceNameTest() returned " + results);
+            Log.d(TAG, "getShiftReduceNameTest() returned true");
             //Log.d(TAG, toString(results));
             return true;
         }
@@ -157,28 +157,28 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+        //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
-        Log.d(TAG, "size before isValid: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG, "size before isValid: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
 
-        Log.d(TAG, "size after isValid: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG, "size after isValid: " + syntax_checker.p.SRList.size());
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest() returned " + results);
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest() returned " + results);
             //Log.d(TAG, toString(results));
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return true;
         }
     }
@@ -199,29 +199,29 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+        //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
-        Log.d(TAG,"before isValidSentenceTest1: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"before isValidSentenceTest1: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
-        Log.d(TAG,"after isValidSentenceTest1: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"after isValidSentenceTest1: " + syntax_checker.p.SRList.size());
 
 
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest1() returned " + results);
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+             //   Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest1() returned " + results);
             //Log.d(TAG, toString(results));
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return true;
         }
     }
@@ -243,30 +243,30 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+        //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
 
-        Log.d(TAG,"before isValidSentenceTest2: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"before isValidSentenceTest2: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
-        Log.d(TAG,"after isValidSentenceTest2: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"after isValidSentenceTest2: " + syntax_checker.p.SRList.size());
 
 
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest2() returned " + results);
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest2() returned " + results);
             //Log.d(TAG, toString(results));
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return true;
         }
     }
@@ -297,29 +297,29 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+        //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
 
-        Log.d(TAG,"before isValidSentenceTest3: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"before isValidSentenceTest3: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
-        Log.d(TAG,"after isValidSentenceTest3: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"after isValidSentenceTest3: " + syntax_checker.p.SRList.size());
 
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest3() returned " + results);
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest3() returned " + results);
             //Log.d(TAG, toString(results));
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            // }
             return true;
         }
     }
@@ -350,30 +350,30 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+        //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
 
-        Log.d(TAG,"before isValidSentenceTest4: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"before isValidSentenceTest4: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
-        Log.d(TAG,"after isValidSentenceTest4: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"after isValidSentenceTest4: " + syntax_checker.p.SRList.size());
 
 
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest4() returned " + results);
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest4() returned " + results);
             //Log.d(TAG, toString(results));
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return true;
         }
     }
@@ -401,30 +401,30 @@ public class Test {
         //Log.d(TAG, input_list.get());
         //create syntax checker object with input list inside
         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
-        Log.d(TAG,syntax_checker.p.SRList.size() +" ");
+        //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
 
 
-        Log.d(TAG,"before isValidSentenceTest5: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"before isValidSentenceTest5: " + syntax_checker.p.SRList.size());
         //calls the isValidSentence Function
         boolean results = syntax_checker.isValidSentence();
-        Log.d(TAG,"after isValidSentenceTest5: " + syntax_checker.p.SRList.size());
+        //Log.d(TAG,"after isValidSentenceTest5: " + syntax_checker.p.SRList.size());
 
 
         //checks output for desired results
         if (results == false){
             Log.d(TAG, "isValidSentenceTest4() returned " + results);
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(0).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return false;
         }else {
             Log.d(TAG, "isValidSentenceTest4() returned " + results);
             //Log.d(TAG, toString(results));
-            for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
-                Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
+            //for (int i = 0; i < syntax_checker.p.SRList.size();i ++ ){
+            //    Log.d(TAG,syntax_checker.p.SRList.get(i).getPartOfSpeech() +" ");
                 //Log.d(TAG,syntax_checker.p.SRList.size() +" ");
-            }
+            //}
             return true;
         }
     }
