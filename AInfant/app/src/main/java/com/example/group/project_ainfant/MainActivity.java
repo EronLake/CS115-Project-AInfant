@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.util.Log;
 
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
@@ -95,6 +96,12 @@ public class MainActivity extends ActionBarActivity {
                         SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
                         boolean results = syntax_checker.isValidSentence();
                         Log.d("result",Boolean.toString(results));
+                        if( results) {
+                            Toast.makeText(getApplicationContext(), "This is a valid sentence.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "This is a invalid sentence.", Toast.LENGTH_LONG).show();
+
+                        }
                     }
                 }
         );
