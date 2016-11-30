@@ -25,6 +25,7 @@ import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Interjection;
 import com.example.group.project_ainfant.PartsOfSpeech.Noun;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
+import com.example.group.project_ainfant.PartsOfSpeech.Pronoun;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
 import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
@@ -178,12 +179,26 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                         } else if (pos.equals("Noun")) {
                             Noun noun = new Noun(word, -1,-1,-1);
                             String tag = spinner2.getSelectedItem().toString();
-                            if (tag.equals("Location")) {
+                            if (tag.equals("Thing")) {
                                 noun.type = 0;
-                            } else if (tag.equals("Time")) {
+                            } else if (tag.equals("Person")) {
                                 noun.type = 1;
-                            } else if (tag.equals("Other")) {
+                            } else if (tag.equals("Place")) {
                                 noun.type = 2;
+                            }
+
+                            String tag2 = spinner3.getSelectedItem().toString();
+                            if (tag2.equals("Proper")) {
+                                noun.propVImp = 3;
+                            } else if (tag2.equals("Improper")) {
+                                noun.propVImp = 4;
+                            }
+
+                            String tag3 = spinner4.getSelectedItem().toString();
+                            if (tag3.equals("Plural")) {
+                                noun.singVPlur = 5;
+                            } else if (tag3.equals("Singular")) {
+                                noun.singVPlur = 6;
                             }
                             myDb.addNoun(noun);
                             if(counter == (tok.length-1) ) {
@@ -203,7 +218,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             } else if (tag.equals("Other")) {
                                 prep.type = 2;
                             }
-                            //myDb.addPrepostion(prep);
+                            myDb.addPrepostion(prep);
                             if(counter == (tok.length-1) ) {
                                 finish();
                             }else{
@@ -211,6 +226,31 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
+                        } else if (pos.equals("Pronoun")) {
+                           Pronoun pron = new Pronoun(word, -1, -1, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Subject")) {
+                                pron.subVObj = 0;
+                            } else if (tag.equals("Object")) {
+                                pron.subVObj = 1;
+                            }
+
+                            String tag2 = spinner3.getSelectedItem().toString();
+                            if (tag2.equals("Male")) {
+                                pron.gender = 2;
+                            } else if (tag2.equals("Female")) {
+                                pron.gender = 3;
+                            } else if (tag2.equals("Other")) {
+                                pron.gender = 4;
+                            }
+
+                            String tag3 = spinner4.getSelectedItem().toString();
+                            if (tag3.equals("Plural")) {
+                                pron.singVPlur = 5;
+                            } else if (tag.equals("Singular")) {
+                                pron.singVPlur = 6;
+                            }
+                            //addPronoun()
                         } else if (pos.equals("Verb")) {
                             Verb verb = new Verb(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -247,81 +287,221 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
         //Chooses which constructor to use
         if ( PoS.contentEquals("Adjective") ) {
             ArrayList<String> options = new ArrayList<>();
+            // Flood menu with options
             options.add("Positive");
             options.add("Negative");
             options.add("Neutral");
-
             // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         } else if (PoS.contentEquals("Adverb")) {
             ArrayList<String> options = new ArrayList<>();
+            // Flood menu with options
             options.add("Positive");
             options.add("Negative");
             options.add("Neutral");
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
             // Initialize selection options for listener method above
-            spinner2.setSelection(position, false);
-            spinner2.setOnItemSelectedListener(this);
-        } else if (PoS.contentEquals("Conjunction")) {
-            ArrayList<String> options = new ArrayList<>();
-            Conjunction conj = new Conjunction(PoS, -1, -1);
-            options.add("Coordinating");
-            options.add("Subordinating");
-            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
-            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            dataAdapter.notifyDataSetChanged();
-            spinner2.setAdapter(dataAdapter);
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
+
             ArrayList<String> options2 = new ArrayList<>();
-            options2.add("AND, OR, NOR");
-            options2.add("BUT, FOR, YET");
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
             ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
             dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter2.notifyDataSetChanged();
             spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
+        } else if (PoS.contentEquals("Conjunction")) {
+            ArrayList<String> options = new ArrayList<>();
+            // Flood menu with options
+            options.add("Coordinating");
+            options.add("Subordinating");
+            // Create second drop down menu
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter.notifyDataSetChanged();
+            spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("AND, OR, NOR");
+            options2.add("BUT, FOR, YET");
+            // Create second drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         } else if (PoS.contentEquals("Determiner")) {
             ArrayList<String> options = new ArrayList<>();
+            // Flood menu with options
             options.add("Plural");
             options.add("Singular");
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+           /* spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         } else if (PoS.contentEquals("Interjection")) {
             ArrayList<String> options = new ArrayList<>();
+            // Flood menu with options
             options.add("Greeting");
             options.add("Exclamation");
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         }else if (PoS.contentEquals("Noun")) {
             ArrayList<String> options = new ArrayList<>();
+            // Flood menu with options
             options.add("Thing");
             options.add("Person");
             options.add("Place");
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-            ArrayList<String> options2 = new ArrayList<>();
 
+
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
             options2.add("Proper");
             options2.add("Improper");
-
+            // Create third drop down menu
             ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
             dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter2.notifyDataSetChanged();
             spinner3.setAdapter(dataAdapter2);
 
+
             ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
             options3.add("Plural");
             options3.add("Singular");
+            // Create fourth drop down menu
             ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
             dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter3.notifyDataSetChanged();
@@ -329,39 +509,116 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
         } else if (PoS.contentEquals("Preposition")) {
             ArrayList<String> options = new ArrayList<>();
-
+            // Flood menu with options
             options.add("Location");
             options.add("Time");
             options.add("Other");
-
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
 
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
 
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         } else if (PoS.contentEquals("Pronoun")) {
             ArrayList<String> options = new ArrayList<>();
-
+            // Flood menu with options
             options.add("Subject");
             options.add("Object");
-
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
 
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         } else if (PoS.contentEquals("Verb")) {
             ArrayList<String> options = new ArrayList<>();
-
+            // Flood menu with options
             options.add("Active");
             options.add("Passive");
-
+            // Create second drop down menu
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
+            // Initialize selection options for listener method above
+            /*spinner2.setSelection(position, false);
+            spinner2.setOnItemSelectedListener(this);*/
 
+            ArrayList<String> options2 = new ArrayList<>();
+            // Flood menu with options
+            options2.add("");
+            // Create third drop down menu
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options2);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            spinner3.setAdapter(dataAdapter2);
+            // Initialize selection options for listener method above
+            /*spinner3.setSelection(position, false);
+            spinner3.setOnItemSelectedListener(this);*/
+
+            ArrayList<String> options3 = new ArrayList<>();
+            // Flood menu with options
+            options3.add("");
+            // Create fourth drop down menu
+            ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options3);
+            dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter3.notifyDataSetChanged();
+            spinner4.setAdapter(dataAdapter3);
+            // Initialize selection options for listener method above
+            /*spinner4.setSelection(position, false);
+            spinner4.setOnItemSelectedListener(this);*/
         }
     }
 
