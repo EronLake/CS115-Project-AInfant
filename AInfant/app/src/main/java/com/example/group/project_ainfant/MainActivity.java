@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.group.project_ainfant.PartsOfSpeech.*;
-import java.util.*;
+import com.example.group.project_ainfant.PartsOfSpeech.Word;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.example.group.project_ainfant.R.id.input_text;
 
 
@@ -32,17 +34,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //DO NOT REMOVE:this is for testing proposes
+        //runs all unit tests on app startup
         Test testRunner = new Test();
-        testRunner.constructObjectTest();
-        testRunner.checkRulesTest();
-        testRunner.getShiftReduceNameTest();
-        testRunner.isValidSentenceTest();
-        testRunner.isValidSentenceTest1();
-        testRunner.isValidSentenceTest2();
-        testRunner.isValidSentenceTest3();
-        testRunner.isValidSentenceTest4();
-        testRunner.isValidSentenceTest5();
+        testRunner.runUnitTests();
 
 
         myDb = new DatabaseHelper(this);
@@ -83,6 +77,20 @@ public class MainActivity extends ActionBarActivity {
                         }
                         output.setText("test2: " + structureString);
 
+                        //code that creates word list
+                        //
+                        //create empty list of words
+                        List<Word> input_list = new ArrayList<Word>();
+                        Word word_constructor = new Word();
+
+                        //input the words with the corresponding type
+                        for(int i=0;i<tok.length;i++){
+                            input_list.add(word_constructor.constructObjectNoTags(tok[i], structure[i]));
+                        }
+
+                        // calls syntax check
+                        SyntaxCheck syntax_checker = new SyntaxCheck(input_list);
+                        boolean results = syntax_checker.isValidSentence();
 
                     }
                 }

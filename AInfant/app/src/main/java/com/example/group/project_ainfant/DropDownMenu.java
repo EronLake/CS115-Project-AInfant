@@ -9,26 +9,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-
 import android.widget.Spinner;
-
 import android.widget.TextView;
-import android.util.Log;
-
-
 
 import com.example.group.project_ainfant.PartsOfSpeech.Adjective;
 import com.example.group.project_ainfant.PartsOfSpeech.Adverb;
 import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Determiner;
-import com.example.group.project_ainfant.PartsOfSpeech.Conjunction;
 import com.example.group.project_ainfant.PartsOfSpeech.Interjection;
 import com.example.group.project_ainfant.PartsOfSpeech.Preposition;
 import com.example.group.project_ainfant.PartsOfSpeech.Verb;
-import com.example.group.project_ainfant.PartsOfSpeech.Word;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DropDownMenu extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
@@ -113,13 +105,12 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             Log.d("adverb type", Integer.toString(adv.posNegNeu));
                             myDb.addAdverb(adv);
 
-<<<<<<< HEAD
-=======
+
                             finish();
                             // Refresh activity here if there are more unknown words:
                             // if (!endOfArrayList) do
                             startActivity(getIntent());
->>>>>>> a28383bb200ba8c3ae01d57fd9d723e483bda67a
+
 
 
                             if(counter == (tok.length-1) ) {
@@ -271,8 +262,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
 
 
         } else if (PoS.contentEquals("Conjunction")) {
-
-          } else if (PoS.contentEquals("Conjunction")) {
 
             ArrayList<String> options = new ArrayList<>();
 

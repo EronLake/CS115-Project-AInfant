@@ -25,6 +25,24 @@ public class Test {
     public Test(){}
 
     private static final String TAG = Test.class.getSimpleName();
+
+
+    public void runUnitTests(){
+        //runs all the unit tests
+        Test testRunner = new Test();
+        testRunner.constructObjectTest();
+        testRunner.checkRulesTest();
+        testRunner.getShiftReduceNameTest();
+        testRunner.isValidSentenceTest();
+        testRunner.isValidSentenceTest1();
+        testRunner.isValidSentenceTest2();
+        testRunner.isValidSentenceTest3();
+        testRunner.isValidSentenceTest4();
+        testRunner.isValidSentenceTest5();
+    }
+
+
+
     //test method for the constructObject function
     public boolean constructObjectTest() {
 
