@@ -82,6 +82,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                     public void onClick(View v) {
                         String pos = spinner.getSelectedItem().toString();
                         //Log.d("tag",pos);
+                          /*
+                            ADVERB--------------------------------------------------
+                             */
                         if (pos.equals("Adverb")) {
                             Adverb adv = new Adverb(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -102,6 +105,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
+                              /*
+                            ADJECTIVE--------------------------------------------------
+                             */
                         } else if (pos.equals("Adjective")) {
                             Adjective adj = new Adjective(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -123,7 +129,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
-
+                            /*
+                            DETERMINER--------------------------------------------------
+                             */
                         } else if (pos.equals("Determiner")) {
                             Determiner det = new Determiner(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -132,17 +140,45 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             } else if (tag.equals("Singular")) {
                                 det.singVPlur = 1;
                             }
-                            Log.d("adj name", det.name);
-                            Log.d("adj type", Integer.toString(det.singVPlur));
+                            Log.d("det name", det.name);
+                            Log.d("det type", Integer.toString(det.singVPlur));
                             myDb.addDeterminer(det);
-                            if(counter == (tok.length-1) ) {
+                            if (counter == (tok.length - 1)) {
                                 finish();
-                            }else{
+                            } else {
                                 counter++;
                                 word = tok[counter];
                                 output.setText(word);
                             }
+                              /*
+                            CONJUNCTION--------------------------------------------------
+                             */
+                        } else if (pos.equals("Conjunction")) {
+                            Conjunction conj = new Conjunction(word, -1, -1);
+                            String tag = spinner2.getSelectedItem().toString();
+                            if (tag.equals("Coordinating")) {
+                                conj.cordVSub = 0;
+                            } else if (tag.equals("Subordinating")) {
+                                conj.cordVSub = 1;
+                            }
 
+                            String tag2 = spinner3.getSelectedItem().toString();
+                            if (tag2.equals("And")) {
+                                conj.andVBut = 2;
+                            } else if (tag2.equals("But")) {
+                                conj.andVBut = 3;
+                            }
+                            myDb.addConjunction(conj);
+                            if (counter == (tok.length - 1)) {
+                                finish();
+                            } else {
+                                counter++;
+                                word = tok[counter];
+                                output.setText(word);
+                            }
+                          /*
+                            Interjection--------------------------------------------------
+                             */
                         } else if (pos.equals("Interjection")) {
                             Interjection inject = new Interjection(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -152,7 +188,6 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 inject.type = 1;
                             }
                             myDb.addInterjection(inject);
-
                             if(counter == (tok.length-1) ) {
                                 finish();
                             }else{
@@ -160,6 +195,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
+                            /*
+                            NOUN--------------------------------------------------
+                             */
                         } else if (pos.equals("Noun")) {
                             Noun noun = new Noun(word, -1,-1,-1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -192,6 +230,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
+                            /*
+                            PREPOSITION--------------------------------------------------
+                             */
                         } else if (pos.equals("Preposition")) {
                             Preposition prep = new Preposition(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -202,7 +243,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             } else if (tag.equals("Other")) {
                                 prep.type = 2;
                             }
-                            myDb.addPrepostion(prep);
+                            myDb.addPreposition(prep);
                             if(counter == (tok.length-1) ) {
                                 finish();
                             }else{
@@ -210,6 +251,9 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                                 word = tok[counter];
                                 output.setText(word);
                             }
+                            /*
+                            PRONOUN--------------------------------------------------
+                             */
                         } else if (pos.equals("Pronoun")) {
                            Pronoun pron = new Pronoun(word, -1, -1, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -234,7 +278,17 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
                             } else if (tag.equals("Singular")) {
                                 pron.singVPlur = 6;
                             }
-                            //addPronoun()
+                            myDb.addPronoun(pron);
+                            if(counter == (tok.length-1) ) {
+                                finish();
+                            }else{
+                                counter++;
+                                word = tok[counter];
+                                output.setText(word);
+                            }
+                              /*
+                            VERB--------------------------------------------------
+                             */
                         } else if (pos.equals("Verb")) {
                             Verb verb = new Verb(word, -1);
                             String tag = spinner2.getSelectedItem().toString();
@@ -280,7 +334,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-<<<<<<< HEAD
+
             // Initialize selection options for listener method above
             /*spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);*/
@@ -308,9 +362,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             // Initialize selection options for listener method above
             /*spinner4.setSelection(position, false);
             spinner4.setOnItemSelectedListener(this);*/
-=======
 
->>>>>>> e6e79de83d9b98902b773eca5442825225fe0019
         } else if (PoS.contentEquals("Adverb")) {
 
             ArrayList<String> options = new ArrayList<>();
@@ -324,7 +376,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
             // Initialize selection options for listener method above
-<<<<<<< HEAD
+
             /*spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);*/
 
@@ -351,11 +403,11 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             // Initialize selection options for listener method above
             /*spinner4.setSelection(position, false);
             spinner4.setOnItemSelectedListener(this);*/
-=======
+
             spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);
 
->>>>>>> e6e79de83d9b98902b773eca5442825225fe0019
+
         } else if (PoS.contentEquals("Conjunction")) {
 
 
@@ -381,7 +433,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter2.notifyDataSetChanged();
             spinner3.setAdapter(dataAdapter2);
-<<<<<<< HEAD
+
             // Initialize selection options for listener method above
             /*spinner3.setSelection(position, false);
             spinner3.setOnItemSelectedListener(this);*/
@@ -397,9 +449,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             // Initialize selection options for listener method above
             /*spinner4.setSelection(position, false);
             spinner4.setOnItemSelectedListener(this);*/
-=======
 
->>>>>>> e6e79de83d9b98902b773eca5442825225fe0019
         } else if (PoS.contentEquals("Determiner")) {
 
             ArrayList<String> options = new ArrayList<>();
@@ -411,7 +461,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-<<<<<<< HEAD
+
             // Initialize selection options for listener method above
            /* spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);*/
@@ -439,9 +489,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             // Initialize selection options for listener method above
             /*spinner4.setSelection(position, false);
             spinner4.setOnItemSelectedListener(this);*/
-=======
 
->>>>>>> e6e79de83d9b98902b773eca5442825225fe0019
         } else if (PoS.contentEquals("Interjection")) {
 
             ArrayList<String> options = new ArrayList<>();
@@ -453,7 +501,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
             spinner2.setAdapter(dataAdapter);
-<<<<<<< HEAD
+
             // Initialize selection options for listener method above
             /*spinner2.setSelection(position, false);
             spinner2.setOnItemSelectedListener(this);*/
@@ -481,9 +529,7 @@ public class DropDownMenu extends ActionBarActivity implements AdapterView.OnIte
             // Initialize selection options for listener method above
             /*spinner4.setSelection(position, false);
             spinner4.setOnItemSelectedListener(this);*/
-=======
 
->>>>>>> e6e79de83d9b98902b773eca5442825225fe0019
         }else if (PoS.contentEquals("Noun")) {
 
             ArrayList<String> options = new ArrayList<>();

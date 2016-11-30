@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void initializeConjunction(SQLiteDatabase db){
         db.execSQL("create table conjuctions " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "WORD text, TYPE text)"
+                + "WORD text, TYPE text, ANDBUT text)"
         );
     }
 
@@ -90,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void initializeNoun(SQLiteDatabase db){
         db.execSQL("create table nouns " + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "WORD text, TYPE text, PROPER text)"
+                + "WORD text, TYPE text, PROPER text, VALUE text)"
         );
     }
 
@@ -155,6 +155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("WORD", conjunction.name); // The word
         values.put("TYPE", conjunction.cordVSub); // Adjective Type
+        values.put("ANDBUT", conjunction.andVBut);
         // Inserting Row
         db.insert("adverbs", null, values);
         //put it in the words table as well
@@ -168,7 +169,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void addDeterminer(Determiner determiner){
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put("WORD", determiner.name); // The word
         values.put("TYPE", determiner.singVPlur); // determiner Type
@@ -189,7 +189,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("TYPE", interjection.type); // determiner Type
         // Inserting Row
         db.insert("interjections", null, values);
-
         //put it in the words table as well
         values.clear();
         values.put("WORD", interjection.name);
@@ -205,6 +204,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("WORD", noun.name); // The word
         values.put("TYPE", noun.type); // Noun type
         values.put("PROPER", noun.propVImp); // Noun type
+        values.put("VALUE", noun.singVPlur);
         // Inserting Row
         db.insert("nouns", null, values);
         //put it in the words table as well
@@ -214,6 +214,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert("words", null, values);
         db.close(); // Closing database connection
 
+    }
+
+    public void addPreposition(Preposition preposition) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("WORD", preposition.name); // The word
+        values.put("TYPE", preposition.type); // determiner Type
+        // Inserting Row
+        db.insert("prepositions", null, values);
+        //put it in the words table as well
+        values.clear();
+        values.put("WORD", preposition.name);
+        values.put("TYPE", "preposition");
+        db.insert("words", null, values);
+        db.close(); // Closing database connection
     }
 
     public void addPronoun(Pronoun pronoun){
